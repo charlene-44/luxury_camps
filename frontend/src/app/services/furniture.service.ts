@@ -9,9 +9,9 @@ import { Furniture } from '../models/furniture.model';
   providedIn: 'root'
 })
 export class FurnitureService {
-  private apiUrl = '/api/furnitures';
+  private readonly apiUrl = '/api/furnitures';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getFurnitures(): Observable<Furniture[]> {
     return this.http.get<Furniture[]>(this.apiUrl);
