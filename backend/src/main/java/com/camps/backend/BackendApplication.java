@@ -1,3 +1,5 @@
+// backend\src\main\java\com\camps\backend\BackendApplication.java
+
 package com.camps.backend;
 
 import org.springframework.boot.SpringApplication;
@@ -18,5 +20,4 @@ public class BackendApplication {
     public String sayHello() {
         return "Hello, World!";
     }
-
 }

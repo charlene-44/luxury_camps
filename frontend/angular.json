@@ -1,3 +1,5 @@
+// frontend\angular.json
+
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
@@ -100,6 +102,6 @@
     }
   },
   "cli": {
-    "analytics": "703755a0-285b-4d52-8baa-1466d5417bae"
+    "analytics": false
   }
 }
