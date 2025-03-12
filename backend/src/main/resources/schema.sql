@@ -95,6 +95,23 @@ CREATE TABLE `Image` (
 -- Un utilisateur peut avoir plusieurs éléments favoris, mais chaque favori relie un utilisateur à un seul meuble.
 
 -- Insert a furniture type (e.g., Sofa)
+-- 1. D'abord, insérer les types de meubles
+INSERT INTO FurnitureType (name) VALUES ('Sofa');
+
+-- 2. Vérifier que l'insertion a fonctionné et récupérer l'ID
+-- SELECT * FROM FurnitureType;
+
+-- 3. Insérer des matériaux
+INSERT INTO Material (name) VALUES ('Bois'), ('Cuir'), ('Tissu');
+
+-- 4. Maintenant, insérer un meuble en utilisant l'ID du type existant
+-- Assurez-vous que l'ID 1 existe dans la table FurnitureType
+INSERT INTO Furniture (name, description, id_type, size, colour, quantity, price, status) 
+VALUES ('Canapé Confort', 'Un canapé confortable pour votre salon', 1, '200x90x80', 'Bleu', 5, 599.99, 'Available');
+
+-- 5. Associer les matériaux au meuble
+-- Assurez-vous que l'ID 1 existe dans la table Furniture et que les IDs 1 et 2 existent dans la table Material
+INSERT INTO Furniture_Material (id_furniture, id_material) VALUES (1, 1), (1, 2);
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
