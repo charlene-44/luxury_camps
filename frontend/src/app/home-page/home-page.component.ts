@@ -11,6 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
   // Définissez ici vos propriétés
   title = 'Bienvenue sur Luxury Camps';
+
+  images = [
+    { src: 'assets/images/snake.jpg', alt: 'Description 1' },
+  ];
   
   constructor() { }
 
