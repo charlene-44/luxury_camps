@@ -10,15 +10,19 @@ public class FurnitureType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT UNSIGNED")
     private Long id;
 
+    @Column(nullable = false, length = 255)
     private String name;
 
-    // Constructors, getters, and setters
-
+    // Constructeurs, getters et setters...
+    // Constructeur par défaut
     public FurnitureType() {
+        // empty
     }
 
+    // Getters et setters
     public Long getId() {
         return id;
     }

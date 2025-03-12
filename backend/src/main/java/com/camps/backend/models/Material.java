@@ -10,13 +10,15 @@ public class Material {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT UNSIGNED")
     private Long id;
 
+    @Column(nullable = false, length = 255)
     private String name;
 
-    // Constructors, getters, and setters
-
+    // Constructeurs, getters et setters...
     public Material() {
+        // empty
     }
 
     public Long getId() {
@@ -35,3 +37,4 @@ public class Material {
         this.name = name;
     }
 }
+
