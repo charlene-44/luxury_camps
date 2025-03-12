@@ -16,7 +16,7 @@ import { FurnitureService } from '../../services/furniture.service';
 export class HomeComponent implements OnInit {
   furnitures: Furniture[] = [];
 
-  constructor(private furnitureService: FurnitureService) {}
+  constructor(private readonly furnitureService: FurnitureService) {}
 
   ngOnInit(): void {
     this.furnitureService.getFurnitures().subscribe((data) => {
