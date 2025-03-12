@@ -27,7 +27,7 @@ public class Furniture {
 
     @ManyToOne
     @JoinColumn(name = "id_type", referencedColumnName = "id")
-    private Type type;
+    private FurnitureType type;
 
     @ManyToMany
     @JoinTable(name = "Furniture_Material", joinColumns = @JoinColumn(name = "id_furniture"), inverseJoinColumns = @JoinColumn(name = "id_material"))

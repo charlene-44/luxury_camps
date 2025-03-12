@@ -1,12 +1,12 @@
-// backend\src\main\java\com\camps\backend\models\Type.java
+// backend\src\main\java\com\camps\backend\models\FurnitureType.java
 
 package com.camps.backend.models;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Type")
-public class Type {
+@Table(name = "FurnitureType")
+public class FurnitureType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Type {
 
     // Constructors, getters, and setters
 
-    public Type() {
+    public FurnitureType() {
     }
 
     public Long getId() {

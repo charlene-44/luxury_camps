@@ -13,11 +13,11 @@ DROP TABLE IF EXISTS `Favorite`;
 DROP TABLE IF EXISTS `Image`;
 DROP TABLE IF EXISTS `Furniture`;
 DROP TABLE IF EXISTS `Material`;
-DROP TABLE IF EXISTS `Furniture_Type`;
+DROP TABLE IF EXISTS `FurnitureType`;
 DROP TABLE IF EXISTS `User`;
 
 -- Create the referenced tables first
-CREATE TABLE `Furniture_Type` (
+CREATE TABLE `FurnitureType` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -35,7 +35,7 @@ CREATE TABLE `User` (
     `role` ENUM ('admin', 'visitor', 'customer', 'seller') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Now create the Furniture table (which references Furniture_Type)
+-- Now create the Furniture table (which references FurnitureType)
 CREATE TABLE `Furniture` (
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(255) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `Furniture` (
     `quantity` INT NOT NULL,
     `price` DOUBLE NOT NULL,
     `status` ENUM ('Available', 'Out of stock', 'Discontinued') NOT NULL,
-    CONSTRAINT `furniture_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `Furniture_Type` (`id`) ON DELETE CASCADE
+    CONSTRAINT `furniture_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `FurnitureType` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Create join table Furniture_Material
@@ -93,6 +93,22 @@ CREATE TABLE `Image` (
 -- Chaque meuble a exactement un type, mais un seul type peut inclure de nombreux meubles différents.
 -- Un meuble peut être marqué comme favori par plusieurs utilisateurs, mais chaque favori ne renvoie qu'à un seul meuble.
 -- Un utilisateur peut avoir plusieurs éléments favoris, mais chaque favori relie un utilisateur à un seul meuble.
+
+-- Insert a furniture type (e.g., Sofa)
+INSERT INTO FurnitureType (name) VALUES ('Sofa');
+
+-- Insert a material (e.g., Leather)
+INSERT INTO Material (name) VALUES ('Leather');
+
+-- Insert a furniture record with a reference to the type.
+-- Make sure the `id_type` matches the inserted FurnitureType id (assumed to be 1).
+INSERT INTO Furniture (name, description, id_type, size, colour, quantity, price, status)
+VALUES ('Modern Leather Sofa', 'A comfortable modern leather sofa', 1, 'Large', 'Brown', 10, 999.99, 'Available');
+
+-- Link the furniture to its material in the join table.
+-- Assumes the furniture id and material id are both 1.
+INSERT INTO Furniture_Material (id_furniture, id_material) VALUES (1, 1);
+
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
