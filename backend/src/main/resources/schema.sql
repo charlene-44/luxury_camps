@@ -95,20 +95,6 @@ CREATE TABLE `Image` (
 -- Un utilisateur peut avoir plusieurs éléments favoris, mais chaque favori relie un utilisateur à un seul meuble.
 
 -- Insert a furniture type (e.g., Sofa)
-INSERT INTO FurnitureType (name) VALUES ('Sofa');
-
--- Insert a material (e.g., Leather)
-INSERT INTO Material (name) VALUES ('Leather');
-
--- Insert a furniture record with a reference to the type.
--- Make sure the `id_type` matches the inserted FurnitureType id (assumed to be 1).
-INSERT INTO Furniture (name, description, id_type, size, colour, quantity, price, status)
-VALUES ('Modern Leather Sofa', 'A comfortable modern leather sofa', 1, 'Large', 'Brown', 10, 999.99, "Available");
-
--- Link the furniture to its material in the join table.
--- Assumes the furniture id and material id are both 1.
-INSERT INTO Furniture_Material (id_furniture, id_material) VALUES (1, 1);
-
 
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
