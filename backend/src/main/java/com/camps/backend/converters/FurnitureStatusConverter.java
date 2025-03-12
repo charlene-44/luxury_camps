@@ -1,3 +1,5 @@
+// backend\src\main\java\com\camps\backend\converters\FurnitureStatusConverter.java
+
 package com.camps.backend.converters;
 
 import com.camps.backend.enums.FurnitureStatus;

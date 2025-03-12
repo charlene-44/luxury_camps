@@ -26,4 +26,33 @@ public class Image {
     private Furniture furniture;
 
     // Constructeurs, getters et setters...
+    // Constructeur par défaut
+    public Image() {
+        // empty
+    }
+
+    // Getters et setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Furniture getFurniture() {
+        return furniture;
+    }
+
+    public void setFurniture(Furniture furniture) {
+        this.furniture = furniture;
+    }
 }

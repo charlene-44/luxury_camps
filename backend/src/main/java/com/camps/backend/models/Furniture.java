@@ -64,4 +64,81 @@ public class Furniture {
     private List<Image> images;
 
     // Constructeurs, getters et setters...
+    // Constructeur par défaut
+    public Furniture() {
+        // empty
+    }
+
+    // Getters et setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public FurnitureStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(FurnitureStatus status) {
+        this.status = status;
+    }
+
+    public FurnitureType getType() {
+        return type;
+    }
+
+    public void setType(FurnitureType type) {
+        this.type = type;
+    }
 }

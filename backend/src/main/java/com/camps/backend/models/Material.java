@@ -17,5 +17,24 @@ public class Material {
     private String name;
 
     // Constructeurs, getters et setters...
+    public Material() {
+        // empty
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 

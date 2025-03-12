@@ -1,4 +1,4 @@
-// backend\src\main\java\com\camps\backend\controllers\FurnitureController.java
+// backend\src\main\java\com\camps\backend\enums\FurnitureStatus.java
 
 package com.camps.backend.enums;
 
