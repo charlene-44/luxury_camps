@@ -3,24 +3,13 @@
 <div class="furniture-card">
   <!-- Display the first image if available -->
   <img
-    *ngIf="furniture.images && furniture.images.length"
-    [src]="'data:image/jpeg;base64,' + furniture.images[0].image"
+    *ngIf="furniture.image"
+    [src]="'data:image/jpeg;base64,' + furniture.image"
     alt="{{ furniture.name }}"
     class="furniture-image"
   />
   <div class="furniture-details">
     <h2>{{ furniture.name }}</h2>
-    <p>{{ furniture.description }}</p>
-    <p><strong>Size:</strong> {{ furniture.size }}</p>
-    <p><strong>Colour:</strong> {{ furniture.colour }}</p>
-    <p><strong>Quantity:</strong> {{ furniture.quantity }}</p>
-    <p><strong>Price:</strong> {{ furniture.price }}</p>
-    <p><strong>Status:</strong> {{ furniture.status }}</p>
-    <p><strong>Type:</strong> {{ furniture.type?.name }}</p>
-    <p><strong>Materials:</strong>
-      <span *ngFor="let material of furniture.materials; let last = last">
-        {{ material.name }}<span *ngIf="!last">, </span>
-      </span>
-    </p>
+    <p><strong>Price:</strong> {{ furniture.price | currency }}</p>
   </div>
 </div>

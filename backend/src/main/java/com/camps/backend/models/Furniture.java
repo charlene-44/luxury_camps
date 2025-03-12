@@ -141,4 +141,9 @@ public class Furniture {
     public void setType(FurnitureType type) {
         this.type = type;
     }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
 }
