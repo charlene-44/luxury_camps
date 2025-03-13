@@ -87,6 +87,15 @@ CREATE TABLE
         CONSTRAINT `favorite_id_user_foreign` FOREIGN KEY (`id_user`) REFERENCES `User` (`id`) ON DELETE CASCADE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
+-- Create Image table
+CREATE TABLE `Image` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id_furniture` INT UNSIGNED NOT NULL,
+    `url` VARCHAR(255) NOT NULL,
+    CONSTRAINT `image_id_furniture_foreign` 
+    FOREIGN KEY (`id_furniture`) REFERENCES `Furniture` (`id`) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+
 -- Insert furniture types first
 INSERT INTO FurnitureType (name) VALUES 
 ('Sofa'),
@@ -110,23 +119,33 @@ INSERT INTO Furniture (
     status
 ) VALUES 
 (
-    'Modern Leather Sofa',
+    'Canapé Dior',
     'A comfortable modern leather sofa',
     1,
     'Large',
-    'Brown',
+    'Nude',
     10,
-    999.99,
+    79999.99,
     'Available'
 ),
 (
-    'Wooden Table',
+    'Table Hermes',
     'Elegant wooden table',
     2,
     'Medium',
-    'Brown',
+    'Blue white',
     5,
-    499.99,
+    2499.99,
+    'Available'
+),
+(
+    'Cabriolet Hermes',
+    'Elegant chair',
+    3,
+    'H60 P40 L60',
+    'Black',
+    2,
+    3399.99,
     'Available'
 );
 
@@ -134,18 +153,11 @@ INSERT INTO Furniture (
 INSERT INTO Furniture_Material (id_furniture, id_material) VALUES 
 (1, 1),
 (1, 2),
-(2, 2);
-
--- Create Image table
-CREATE TABLE `Image` (
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `id_furniture` INT UNSIGNED NOT NULL,
-    `url` VARCHAR(255) NOT NULL,
-    CONSTRAINT `image_id_furniture_foreign` 
-    FOREIGN KEY (`id_furniture`) REFERENCES `Furniture` (`id`) ON DELETE CASCADE
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+(2, 2),
+(3,1);
 
 -- Insert images (après avoir créé les meubles)
 INSERT INTO Image (id_furniture, url) VALUES 
-(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/Dior/chaise_detail3.webp'),
-(2, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/Dior/chaise_detail3.webp');
+(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/LV/canape_detail3.avif'),
+(2, 'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/Hermes/table_appoint.png'),
+(3, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/Hermes/Cabriolet.webp');
