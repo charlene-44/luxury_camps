@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-// import { RouterOutlet } from '@angular/router';  // Importation du RouterOutlet, commenté pour le moment
+import { RouterOutlet } from '@angular/router';  // Importation du RouterOutlet, commenté pour le moment
 import { HeaderComponent } from './header/header.component';  // Importation du composant Header
 import { HomePageComponent } from './home-page/home-page.component';  // Importation du composant HomePage
 import { CardFurniture } from './models/card-furniture';  // Importation de la classe CardFurniture qui représente les meubles
@@ -7,7 +7,7 @@ import { CardFurniture } from './models/card-furniture';  // Importation de la c
 @Component({
   selector: 'app-root',  // Le sélecteur pour ce composant, il sera utilisé dans le HTML pour l'afficher
   imports: [
-    // RouterOutlet,  // Permettrait de gérer la navigation par route
+    RouterOutlet,  // Permettrait de gérer la navigation par route
     HeaderComponent,  // Inclusion du HeaderComponent dans ce composant
     HomePageComponent,  // Inclusion du HomePageComponent dans ce composant
   ],
