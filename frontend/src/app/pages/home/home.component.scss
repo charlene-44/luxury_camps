@@ -1,0 +1,11 @@
+// frontend/src/app/pages/home/home.component.scss
+
+.home {
+  padding: 16px;
+}
+
+.furniture-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
