@@ -12,14 +12,25 @@ import { CardFurniture } from '../../models/card-furniture';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
+
 export class HomeComponent implements OnInit {
   cardFurnitures: CardFurniture[] = [];
+  loading = true;
+  error = false;
 
   constructor(private readonly furnitureService: FurnitureService) {}
 
   ngOnInit(): void {
-    this.furnitureService.getFurnitures().subscribe((data) => {
-      this.cardFurnitures = data;
+    this.furnitureService.getFurnitures().subscribe({
+      next: (data) => {
+        this.cardFurnitures = data;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erreur lors de la récupération des données', err);
+        this.error = true;
+        this.loading = false;
+      }
     });
   }
 }

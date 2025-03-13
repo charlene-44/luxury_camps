@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Anciens meubles pour une nouvelle vie</title>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anciens meubles pour une nouvelle vie</title>
+  </head>
+  <body>
+    <!-- home-page.component.html -->
+    <h1>Liste des meubles</h1>
 
-        <h1>Liste des meubles</h1>
+    <div *ngIf="loading">
+      <p>Chargement des données...</p>
+    </div>
 
-        <ul *ngIf="cardFurnitures.length > 0; else loading">
-            <li *ngFor="let furniture of cardFurnitures">
-                <strong>{{ furniture.name }}</strong> <!-- Nom du meuble -->
-                <p>ID: {{ furniture.localId }}</p> <!-- Identifiant -->
-                <img [src]="furniture.image" alt="{{ furniture.name }}"
-                    width="200">
-                <!-- Image -->
-            </li>
-        </ul>
+    <ul *ngIf="cardFurnitures.length > 0 && !loading">
+      <li *ngFor="let furniture of cardFurnitures">
+        <strong>{{ furniture.name }}</strong>
+        <img [src]="furniture.image" alt="{{ furniture.name }}" width="200" />
+        <p>{{ furniture.description }}</p>
+        <p>{{ furniture.price }}</p>
+        <button>Acheter</button>
+      </li>
+    </ul>
 
-        <!-- Message de chargement -->
-        <ng-template #loading>
-            <p>Chargement des données...</p>
-        </ng-template>
+    <p *ngIf="cardFurnitures.length === 0 && !loading && !error">
+      Aucun meuble disponible pour le moment.
+    </p>
 
-    </body>
+    <p *ngIf="error">Une erreur est survenue lors du chargement des données.</p>
+  </body>
 </html>

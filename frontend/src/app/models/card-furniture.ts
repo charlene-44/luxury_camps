@@ -1,6 +1,10 @@
 export interface CardFurniture {
 
-     name : string;  image : string;  localId : number;
+     name: string;
+     price: number;
+     image: string;
+     description: string;
+     
 
 
 }

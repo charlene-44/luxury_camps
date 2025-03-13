@@ -2,6 +2,7 @@
 
 export interface Furniture {
   name: string;
+  price :string;
   image: string;
-  localId: number;
+  description: string;
 }
