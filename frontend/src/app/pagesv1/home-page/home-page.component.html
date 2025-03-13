@@ -1,32 +1,37 @@
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anciens meubles pour une nouvelle vie</title>
-  </head>
-  <body>
-    <!-- home-page.component.html -->
-    <h1>Liste des meubles</h1>
 
-    <div *ngIf="loading">
+<main class="p-4 text-emerald-950">
+    <!-- Chargement -->
+    <div *ngIf="loading" class="text-center mb-6">
       <p>Chargement des données...</p>
     </div>
+  
+    <!-- Liste des cartes -->
+    <ul *ngIf="cardFurnitures.length > 0 && !loading" class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
-    <ul *ngIf="cardFurnitures.length > 0 && !loading">
-      <li *ngFor="let furniture of cardFurnitures">
-        <strong>{{ furniture.name }}</strong>
-        <img [src]="furniture.image" alt="{{ furniture.name }}" width="200" />
-        <p>{{ furniture.description }}</p>
-        <p>{{ furniture.price }}</p>
-        <button>Acheter</button>
-      </li>
+        <li *ngFor="let furniture of cardFurnitures" class="bg-orange-50 p-4 rounded-lg shadow-lg max-w-md mx-auto">
+            <strong class="block text-lg font-semibold mb-2 text-center">{{ furniture.name }}</strong>
+            <img [src]="furniture.image" alt="{{ furniture.name }}" class="w-full max-w-xs h-auto rounded-lg mb-3 mx-auto" />
+            <p class="text-sm mb-2 text-center">{{ furniture.description }}</p>
+            <div class="flex items-center justify-between mt-3">
+              <p class="text-sm font-bold">{{ furniture.price }}</p>
+              <button class="bg-emerald-950 hover:bg-emerald-900 text-white font-bold py-2 px-4 rounded transition duration-300">
+                Acheter
+              </button>
+            </div>
+          </li>
+          
+
+          
     </ul>
-
-    <p *ngIf="cardFurnitures.length === 0 && !loading && !error">
+  
+    <!-- Message quand il n'y a pas de meubles -->
+    <p *ngIf="cardFurnitures.length === 0 && !loading && !error" class="text-center mt-6">
       Aucun meuble disponible pour le moment.
     </p>
-
-    <p *ngIf="error">Une erreur est survenue lors du chargement des données.</p>
-  </body>
-</html>
+  
+    <!-- Message d'erreur -->
+    <p *ngIf="error" class="text-center text-red-500 mt-6">
+      Une erreur est survenue lors du chargement des données.
+    </p>
+  </main>
+  

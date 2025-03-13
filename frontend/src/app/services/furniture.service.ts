@@ -61,7 +61,13 @@ export class FurnitureService {
       image: "https://tse2.mm.bing.net/th?id=OIP.5VQmvp25mU-zWRhj1XdYzQHaE8&pid=Api&P=0&h=180",
       description: "Une table basse au design épuré avec plateau en verre trempé et pieds en métal noir."
     },
-    // Ajoutez les autres meubles ici...
+    {
+      name: "Table Basse Minimaliste",
+      price: 349.50,
+      image: "https://tse2.mm.bing.net/th?id=OIP.5VQmvp25mU-zWRhj1XdYzQHaE8&pid=Api&P=0&h=180",
+      description: "Une table basse au design épuré avec plateau en verre trempé et pieds en métal noir."
+    },
+   
   ];
   constructor() { }
   getFurnitures(): Observable<CardFurniture[]> {

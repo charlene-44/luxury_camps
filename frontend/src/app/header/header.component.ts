@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [
+    NavbarComponent
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
 
-logoUrl!: string;
+imageUrl!: 'assets/header-photo.webp';
 
 ngOnInit(): void {
   
-  this.logoUrl = 'https://static.vecteezy.com/system/resources/previews/007/410/276/original/furniture-logo-design-vector.jpg';
+  this.imageUrl = 'assets/header-photo.webp';
 
 }
 
