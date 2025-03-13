@@ -1,10 +1,6 @@
-export class CardFurniture {
+export interface CardFurniture {
 
-    constructor(public title : string, public imageUrl : string, public price : number) { }  
-
-
-
-
+     name : string;  image : string;  localId : number;
 
 
 }

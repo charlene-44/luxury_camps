@@ -9,7 +9,7 @@ import { Furniture } from '../models/furniture.model';
   providedIn: 'root'
 })
 export class FurnitureService {
-  private readonly apiUrl = '/api/furnitures';
+  private readonly apiUrl = '/cards/swsh3-136';
 
   constructor(private readonly http: HttpClient) { }
 

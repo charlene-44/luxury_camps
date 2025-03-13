@@ -2,6 +2,6 @@
 
 export interface Furniture {
   name: string;
-  price: number;
-  image: string | null;
+  image: string;
+  localId: number;
 }

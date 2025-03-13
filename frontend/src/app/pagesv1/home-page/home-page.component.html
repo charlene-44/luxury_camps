@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Anciens meubles pour une nouvelle vie</title>
+    </head>
+    <body>
+
+        <h1>Liste des meubles</h1>
+
+        <ul *ngIf="cardFurnitures.length > 0; else loading">
+            <li *ngFor="let furniture of cardFurnitures">
+                <strong>{{ furniture.name }}</strong> <!-- Nom du meuble -->
+                <p>ID: {{ furniture.localId }}</p> <!-- Identifiant -->
+                <img [src]="furniture.image" alt="{{ furniture.name }}"
+                    width="200">
+                <!-- Image -->
+            </li>
+        </ul>
+
+        <!-- Message de chargement -->
+        <ng-template #loading>
+            <p>Chargement des données...</p>
+        </ng-template>
+
+    </body>
+</html>
