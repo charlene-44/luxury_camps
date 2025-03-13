@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "Furniture")
+@Table(name = "furniture")
 public class Furniture {
 
     @Id
@@ -141,4 +141,9 @@ public class Furniture {
     public void setType(FurnitureType type) {
         this.type = type;
     }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
 }

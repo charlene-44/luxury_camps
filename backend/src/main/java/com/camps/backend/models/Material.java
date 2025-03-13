@@ -5,7 +5,7 @@ package com.camps.backend.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Material")
+@Table(name = "material")
 public class Material {
 
     @Id
