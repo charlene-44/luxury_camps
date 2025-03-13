@@ -3,8 +3,8 @@
 <div class="furniture-card">
   <!-- Display the first image if available -->
   <img
-    *ngIf="furniture.image"
-    [src]="'data:image/jpeg;base64,' + furniture.image"
+    *ngIf="furniture.imageUrl"
+    [src]="furniture.imageUrl"
     alt="{{ furniture.name }}"
     class="furniture-image"
   />

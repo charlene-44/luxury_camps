@@ -3,5 +3,5 @@
 export interface Furniture {
   name: string;
   price: number;
-  image: string | null;
+  imageUrl: string | null;
 }
