@@ -23,12 +23,15 @@ public class FurnitureController {
     public List<FurnitureDTO> getAllFurniture() {
         return furnitureService.getAllFurniture().stream()
                 .map(furniture -> {
-                    // Récupère la première image disponible si présente
-                    byte[] image = null;
+                    String imageUrl = null;
                     if (furniture.getImages() != null && !furniture.getImages().isEmpty()) {
-                        image = furniture.getImages().get(0).getImage();
+                        imageUrl = furniture.getImages().get(0).getUrl();
                     }
-                    return new FurnitureDTO(furniture.getName(), furniture.getPrice(), image);
+                    return new FurnitureDTO(
+                        furniture.getName(), 
+                        furniture.getPrice(), 
+                        imageUrl
+                    );
                 })
                 .collect(Collectors.toList());
     }
