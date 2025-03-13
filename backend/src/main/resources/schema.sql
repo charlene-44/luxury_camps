@@ -114,7 +114,8 @@ INSERT INTO
     FurnitureType (name)
 VALUES
     ('Sofa'),
-    ('Table');
+    ('Table'),
+    ('cousin');
 
 -- Insert a material (e.g., Leather)
 INSERT INTO
