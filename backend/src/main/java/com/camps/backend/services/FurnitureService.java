@@ -6,6 +6,7 @@ import com.camps.backend.models.Furniture;
 import com.camps.backend.repositories.FurnitureRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FurnitureService {
@@ -18,5 +19,9 @@ public class FurnitureService {
 
     public List<Furniture> getAllFurniture() {
         return furnitureRepository.findAll();
+    }
+
+    public Optional<Furniture> getFurnitureById(Long id) {
+        return furnitureRepository.findById(id);
     }
 }
