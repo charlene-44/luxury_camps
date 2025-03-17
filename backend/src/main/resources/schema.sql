@@ -1,6 +1,6 @@
 -- backend\src\main\resources\schema.sql
-SET
-    SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- SET
+--     SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
 START TRANSACTION;
 

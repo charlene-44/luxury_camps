@@ -24,7 +24,14 @@ export class FurnitureDetailsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const idParam = this.route.snapshot.paramMap.get('id');
+    const id = Number(idParam);
+    if (!idParam || isNaN(id) || id <= 0) {
+      console.error('Invalid or missing furniture id.');
+      this.error = true;
+      this.loading = false;
+      return;
+    }
     this.loadFurnitureDetails(id);
   }
 
