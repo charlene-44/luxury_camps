@@ -18,19 +18,35 @@ export class HomeComponent implements OnInit {
   loading = true;
   error = false;
 
-  constructor(private readonly furnitureService: FurnitureService) {}
+  constructor(private furnitureService: FurnitureService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.loadFurnitures();
+  }
+
+  loadFurnitures() {
     this.furnitureService.getFurnitures().subscribe({
       next: (data) => {
+        console.log('Données reçues dans le composant:', data);
         this.cardFurnitures = data;
+        console.log('CardFurnitures après affectation:', this.cardFurnitures);
         this.loading = false;
       },
-      error: (err) => {
-        console.error('Erreur lors de la récupération des données', err);
+      error: (error) => {
+        console.error('Erreur lors du chargement des meubles:', error);
         this.error = true;
         this.loading = false;
       }
     });
+  }
+
+  onImageLoad(url: string) {
+    console.log('Image chargée avec succès:', url);
+  }
+
+  handleImageError(event: any) {
+    console.error('Erreur de chargement de l\'image:', event.target.src);
+    console.error('URL qui a échoué:', event.target.src);
+    event.target.src = '/assets/images/placeholder.png';
   }
 }
