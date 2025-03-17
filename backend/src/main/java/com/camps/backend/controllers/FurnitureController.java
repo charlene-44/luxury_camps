@@ -33,6 +33,7 @@ public class FurnitureController {
                         imageUrl = furniture.getImages().get(0).getUrl();
                     }
                     return new FurnitureDTO(
+                        furniture.getId(),
                         furniture.getName(), 
                         furniture.getPrice(), 
                         imageUrl

@@ -1,0 +1,57 @@
+<main class="p-4">
+  <!-- Chargement -->
+  <div *ngIf="loading" class="text-center">
+    <p>Chargement des détails...</p>
+  </div>
+
+  <!-- Détails du meuble -->
+  <div *ngIf="furniture && !loading" class="max-w-4xl mx-auto">
+    <div class="bg-orange-50 rounded-lg shadow-lg p-6">
+      <h1 class="text-2xl font-bold mb-4 text-black">{{ furniture.name }}</h1>
+
+      <!-- Galerie d'images -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <img *ngFor="let image of furniture.images" 
+             [src]="image" 
+             [alt]="furniture.name"
+             class="w-full rounded-lg shadow-md">
+      </div>
+
+      <!-- Informations principales -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h2 class="text-xl font-semibold mb-2 text-black">Description</h2>
+          <p class="text-gray-700 text-black">{{ furniture.description }}</p>
+          
+          <div class="mt-4 text-black">
+            <p class="font-semibold text-black">Prix: <span class="text-emerald-600 text-black">{{ furniture.price }}€</span></p>
+            <p>Disponibilité: <span class="font-medium text-black">{{ furniture.status }}</span></p>
+            <p>Quantité en stock: <span class="font-medium text-black">{{ furniture.quantity }}</span></p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold mb-2 text-black">Caractéristiques</h2>
+          <ul class="space-y-2 text-black">
+            <li>Type: {{ furniture.type }}</li>
+            <li>Dimensions: {{ furniture.size }}</li>
+            <li>Couleur: {{ furniture.colour }}</li>
+            <li>Matériaux: {{ furniture.materials.join(', ') }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bouton d'achat -->
+      <div class="mt-8 text-center text-black">
+        <button class="bg-emerald-950 text-white px-8 py-3 rounded-lg hover:bg-emerald-900 transition">
+          Ajouter au panier
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message d'erreur -->
+  <p *ngIf="error" class="text-center text-red-500 mt-6">
+    Une erreur est survenue lors du chargement des détails.
+  </p>
+</main> 
