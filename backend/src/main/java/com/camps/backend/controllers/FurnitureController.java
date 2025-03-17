@@ -1,7 +1,7 @@
-// backend\src\main\java\com\camps\backend\controllers\FurnitureController.java
-
+// backend/src/main/java/com/camps/backend/controllers/FurnitureController.java
 package com.camps.backend.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,12 +9,14 @@ import com.camps.backend.models.Furniture;
 import com.camps.backend.services.FurnitureService;
 import com.camps.backend.dtos.FurnitureDTO;
 import com.camps.backend.dtos.FurnitureDetailDTO;
+import com.camps.backend.dtos.FurnitureCreateDTO;
 import com.camps.backend.errors.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 public class FurnitureController {
     private final FurnitureService furnitureService;
@@ -46,6 +48,14 @@ public class FurnitureController {
                 .orElseThrow(() -> new ResourceNotFoundException("Meuble non trouvé avec l'id: " + id));
         FurnitureDetailDTO detailDTO = convertToDetailDTO(furniture);
         return ResponseEntity.ok(detailDTO);
+    }
+    
+    // Nouveau endpoint pour créer un meuble
+    @PostMapping("/furniture")
+    public ResponseEntity<FurnitureDetailDTO> createFurniture(@RequestBody FurnitureCreateDTO dto) {
+        Furniture created = furnitureService.createFurniture(dto);
+        FurnitureDetailDTO detailDTO = convertToDetailDTO(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(detailDTO);
     }
 
     private FurnitureDetailDTO convertToDetailDTO(Furniture furniture) {

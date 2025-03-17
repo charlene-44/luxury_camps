@@ -146,7 +146,15 @@ public class Furniture {
         return images;
     }
 
+    public void setImages(List<Image> images){
+        this.images = images;
+    }
+
     public Set<Material> getMaterials() {
         return materials;
+    }
+
+    public void setMaterials (Set<Material> materials){
+        this.materials = materials;
     }
 }
