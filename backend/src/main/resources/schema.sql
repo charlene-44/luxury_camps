@@ -158,9 +158,13 @@ INSERT INTO Furniture_Material (id_furniture, id_material) VALUES
 
 -- Insert images (après avoir créé les meubles)
 INSERT INTO Image (id_furniture, url) VALUES 
-(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/LV/canape.avif'),
-(1,'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/LV/canape_detail1.avif'),
-(1,'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/LV/canape_detail2.avif'),
-(1,'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/LV/canape_detail3.avif'),
-(2, 'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/Hermes/table_appoint.png?raw=true'),
-(3, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/Hermes/Cabriolet.webp');
+-- Images pour le Canapé Dior (id_furniture = 1)
+(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/dev/frontend/public/assets/LV/canape.avif'),
+(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/dev/frontend/public/assets/LV/canape_detail1.avif'),
+(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/dev/frontend/public/assets/LV/canape_detail3.avif'),
+
+-- Image pour la Table Hermes (id_furniture = 2)
+(2, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/table_appoint.png'),
+
+-- Image pour le Cabriolet Hermes (id_furniture = 3)
+(3, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/Cabriolet.webp');

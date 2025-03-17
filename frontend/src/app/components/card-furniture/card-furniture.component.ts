@@ -1,15 +1,16 @@
 // frontend/src/app/components/furniture-card/furniture-card.component.ts
+
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Furniture } from '../../models/furniture.model';
+import { CardFurniture } from '../../models/card-furniture.model';
 
 @Component({
-  selector: 'app-furniture-card',
+  selector: 'card-furniture',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './furniture-card.component.html',
-  styleUrls: ['./furniture-card.component.scss']
+  templateUrl: './card-furniture.component.html',
+  styleUrls: ['./card-furniture.component.scss'],
 })
 export class FurnitureCardComponent {
-  @Input() furniture!: Furniture;
+  @Input() furniture!: CardFurniture;
 }
