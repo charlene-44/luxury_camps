@@ -21,6 +21,10 @@ export class HomePage implements OnInit {
   constructor(private readonly furnitureService: FurnitureService) {}
 
   ngOnInit(): void {
+    this.loadFurnitures();
+  }
+
+  private loadFurnitures() {
     this.furnitureService.getFurnitures().subscribe({
       next: (data) => {
         this.cardFurnitures = data;
@@ -30,7 +34,7 @@ export class HomePage implements OnInit {
         console.error('Erreur lors de la récupération des données', err);
         this.error = true;
         this.loading = false;
-      },
+      }
     });
   }
 }
