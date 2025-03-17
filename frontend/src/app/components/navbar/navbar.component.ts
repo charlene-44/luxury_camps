@@ -1,3 +1,5 @@
+// frontend\src\app\components\navbar\navbar.component.ts
+
 import { Component } from '@angular/core';
 
 @Component({

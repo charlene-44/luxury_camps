@@ -28,7 +28,7 @@ export class FurnitureService {
           };
           return [cardFurniture];
         }
-        
+
         // Si l'API renvoie déjà un tableau
         return response.map((item: any) => ({
           id: item.id || 0,

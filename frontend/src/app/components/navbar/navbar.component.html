@@ -1,48 +1,77 @@
-<nav class="bg-emerald-950 text-white flex items-center justify-between p-4 shadow-lg">
-    <!-- Section gauche : Logo -->
-    <div class="flex items-center space-x-5">
-      <img src="assets/logo.png" alt="Logo canapé" class="h-12 w-12" />
-      <span class="text-lg font-bold">LUXURY CAMPS</span>
-    </div>
+<!-- frontend\src\app\models\furniture-details.model.ts -->
 
-    <!-- Section droite : Barre de recherche et icônes -->
-    <div class="flex items-center space-x-4">
-      <!-- Barre de recherche -->
-      <input 
-        id="search"
-        type="text" 
-        placeholder="Recherche..." 
-        class="px-4 py-2 w-50 rounded-lg text-white text-sm placeholder-white placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 text-white"
-        style="font-family: 'Open Sans', sans-serif;"
-      />
-  
-      <!-- Icône Utilisateur -->
-      <button>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24">
-          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/>
-        </svg>
-      </button>
-  
-      <!-- Icône Favoris -->
-      <button>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-      </button>
-  
-      <!-- Icône Panier -->
-      <button>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 18a2 2 0 11-4 0 2 2 0 014 0zm14 0a2 2 0 11-4 0 2 2 0 014 0zM5 2a1 1 0 00-1 1v2h2l3.6 7.59-1.35 2.44A1 1 0 009 17h10a1 1 0 00.92-.63l3-7A1 1 0 0022 8H6.21l-.94-2H5V3h-.5zm16.45 6l-2.54 6H9.59l1.1-2h9.61l-.25-.5h-8.61l-1.08-2h11.09z"/>
-        </svg>
-      </button>
-  
-      <!-- Icône Menu -->
-      <button>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24">
-          <path d="M3 12h18v2H3v-2zm0-5h18v2H3V7zm0 10h18v2H3v-2z"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-  
+<nav
+  class="bg-emerald-950 text-white flex items-center justify-between p-4 shadow-lg"
+>
+  <!-- Section gauche : Logo -->
+  <div class="flex items-center space-x-5">
+    <img src="assets/logo.png" alt="Logo canapé" class="h-12 w-12" />
+    <span class="text-lg font-bold">LUXURY CAMPS</span>
+  </div>
+
+  <!-- Section droite : Barre de recherche et icônes -->
+  <div class="flex items-center space-x-4">
+    <!-- Barre de recherche -->
+    <input
+      id="search"
+      type="text"
+      placeholder="Recherche..."
+      class="px-4 py-2 w-50 rounded-lg text-white text-sm placeholder-white placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 text-white"
+      style="font-family: 'Open Sans', sans-serif"
+    />
+
+    <!-- Icône Utilisateur -->
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="h-6 w-6"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"
+        />
+      </svg>
+    </button>
+
+    <!-- Icône Favoris -->
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="h-6 w-6"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+      </svg>
+    </button>
+
+    <!-- Icône Panier -->
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path
+          d="M7 18a2 2 0 11-4 0 2 2 0 014 0zm14 0a2 2 0 11-4 0 2 2 0 014 0zM5 2a1 1 0 00-1 1v2h2l3.6 7.59-1.35 2.44A1 1 0 009 17h10a1 1 0 00.92-.63l3-7A1 1 0 0022 8H6.21l-.94-2H5V3h-.5zm16.45 6l-2.54 6H9.59l1.1-2h9.61l-.25-.5h-8.61l-1.08-2h11.09z"
+        />
+      </svg>
+    </button>
+
+    <!-- Icône Menu -->
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        class="h-6 w-6"
+        viewBox="0 0 24 24"
+      >
+        <path d="M3 12h18v2H3v-2zm0-5h18v2H3V7zm0 10h18v2H3v-2z" />
+      </svg>
+    </button>
+  </div>
+</nav>
