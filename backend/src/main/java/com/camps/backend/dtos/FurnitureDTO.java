@@ -5,12 +5,12 @@ package com.camps.backend.dtos;
 public class FurnitureDTO {
     private String name;
     private double price;
-    private byte[] image;
+    private String imageUrl;  // URL au lieu du byte[]
 
-    public FurnitureDTO(String name, double price, byte[] image) {
+    public FurnitureDTO(String name, double price, String imageUrl) {
         this.name = name;
         this.price = price;
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
     // Getters & Setters
@@ -30,11 +30,11 @@ public class FurnitureDTO {
         this.price = price;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

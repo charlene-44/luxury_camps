@@ -13,10 +13,8 @@ public class Image {
     @Column(columnDefinition = "INT UNSIGNED")
     private Long id;
 
-    // La colonne "image" est de type BLOB
-    @Lob
     @Column(nullable = false)
-    private byte[] image;
+    private String url;  // URL de l'image au lieu du BLOB
 
     // Chaque image appartient à un seul meuble, avec contrainte FOREIGN KEY "image_id_furniture_foreign"
     @ManyToOne
@@ -40,12 +38,12 @@ public class Image {
         this.id = id;
     }
 
-    public byte[] getImage() {
-        return image;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Furniture getFurniture() {

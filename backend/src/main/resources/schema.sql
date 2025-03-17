@@ -88,91 +88,79 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
 -- Create Image table
-CREATE TABLE
-    `Image` (
-        `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        `id_furniture` INT UNSIGNED NOT NULL,
-        `image` BLOB NOT NULL,
-        CONSTRAINT `image_id_furniture_foreign` FOREIGN KEY (`id_furniture`) REFERENCES `Furniture` (`id`) ON DELETE CASCADE
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
+CREATE TABLE `Image` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `id_furniture` INT UNSIGNED NOT NULL,
+    `url` VARCHAR(255) NOT NULL,
+    CONSTRAINT `image_id_furniture_foreign` 
+    FOREIGN KEY (`id_furniture`) REFERENCES `Furniture` (`id`) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
--- Relationships
--- EN version
--- A single piece of furniture can have multiple images, but each image belongs to just one piece of furniture.
--- Furniture can be made from various materials, and each material can be used across many different furniture pieces.
--- Every piece of furniture has exactly one type, but a single type can include many different pieces of furniture.
--- A piece of furniture can be marked as a favorite by multiple users, but each favorite entry links to just one furniture item.
--- A user can have many favorite items, but each favorite connects one user to a single piece of furniture.
--- FR version
--- Un seul meuble peut avoir plusieurs images, mais chaque image n'appartient qu'à un seul meuble.
--- Les meubles peuvent être fabriqués à partir de différents matériaux, et chaque matériau peut être utilisé pour plusieurs meubles différents.
--- Chaque meuble a exactement un type, mais un seul type peut inclure de nombreux meubles différents.
--- Un meuble peut être marqué comme favori par plusieurs utilisateurs, mais chaque favori ne renvoie qu'à un seul meuble.
--- Un utilisateur peut avoir plusieurs éléments favoris, mais chaque favori relie un utilisateur à un seul meuble.
--- Insert a furniture type (e.g., Sofa)
-INSERT INTO
-    FurnitureType (name)
-VALUES
-    ('Sofa'),
-    ('Table'),
-    ('cousin');
+-- Insert furniture types first
+INSERT INTO FurnitureType (name) VALUES 
+('Sofa'),
+('Table'),
+('Cousin');
 
--- Insert a material (e.g., Leather)
-INSERT INTO
-    Material (name)
-VALUES
-    ('Leather'),
-    ('Wood');
+-- Insert materials
+INSERT INTO Material (name) VALUES 
+('Leather'),
+('Wood');
 
--- Insert a furniture record with a reference to the type.
--- Make sure the `id_type` matches the inserted FurnitureType id (assumed to be 1).
-INSERT INTO
-    Furniture (
-        name,
-        description,
-        id_type,
-        size,
-        colour,
-        quantity,
-        price,
-        status
-    )
-VALUES
-    (
-        'Modern Leather Sofa',
-        'A comfortable modern leather sofa',
-        1,
-        'Large',
-        'Brown',
-        10,
-        999.99,
-        "Available"
-    ),
-    (
-        'quelque chose',
-        'la description de quelque chose',
-        2,
-        'Medium',
-        'Blue',
-        7,
-        35.99,
-        "Out of stock"
-    );
+-- Insert furniture records
+INSERT INTO Furniture (
+    name,
+    description,
+    id_type,
+    size,
+    colour,
+    quantity,
+    price,
+    status
+) VALUES 
+(
+    'Canapé Dior',
+    'A comfortable modern leather sofa',
+    1,
+    'Large',
+    'Nude',
+    10,
+    79999.99,
+    'Available'
+),
+(
+    'Table Hermes',
+    'Elegant wooden table',
+    2,
+    'Medium',
+    'Blue white',
+    5,
+    2499.99,
+    'Available'
+),
+(
+    'Cabriolet Hermes',
+    'Elegant chair',
+    3,
+    'H60 P40 L60',
+    'Black',
+    2,
+    3399.99,
+    'Available'
+);
 
--- Link the furniture to its material in the join table.
--- Assumes the furniture id and material id are both 1.
-INSERT INTO
-    Furniture_Material (id_furniture, id_material)
-VALUES
-    (1, 1),
-    (1, 2),
-    (2, 1),
-    (2, 2);
+-- Link furniture to materials
+INSERT INTO Furniture_Material (id_furniture, id_material) VALUES 
+(1, 1),
+(1, 2),
+(2, 2),
+(3,1);
 
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Insert images (après avoir créé les meubles)
+INSERT INTO Image (id_furniture, url) VALUES 
+(1, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/LV/canape.avif'),
+(1,'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/LV/canape_detail1.avif'),
+(1,'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/LV/canape_detail2.avif'),
+(1,'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/LV/canape_detail3.avif'),
+(2, 'https://github.com/charlene-44/luxury_camps/blob/feature_home_page/frontend/public/assets/Hermes/table_appoint.png?raw=true'),
+(3, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/refs/heads/feature_home_page/frontend/public/assets/Hermes/Cabriolet.webp');

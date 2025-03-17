@@ -146,4 +146,7 @@ public class Furniture {
         return images;
     }
 
+    public Set<Material> getMaterials() {
+        return materials;
+    }
 }
