@@ -1,3 +1,5 @@
+// frontend\src\app\components\header\header.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 
@@ -5,16 +7,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
   selector: 'app-header',
   imports: [NavbarComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
+  imageUrl!: 'assets/header-photo.webp';
 
-imageUrl!: 'assets/header-photo.webp';
-
-ngOnInit(): void {
-  
-  this.imageUrl = 'assets/header-photo.webp';
-
-}
-
+  ngOnInit(): void {
+    this.imageUrl = 'assets/header-photo.webp';
+  }
 }

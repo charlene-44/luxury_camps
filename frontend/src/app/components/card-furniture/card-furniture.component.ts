@@ -1,4 +1,4 @@
-// frontend/src/app/components/furniture-card/furniture-card.component.ts
+// frontend/src/app/components/card-furniture/card-furniture.component.ts
 
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
