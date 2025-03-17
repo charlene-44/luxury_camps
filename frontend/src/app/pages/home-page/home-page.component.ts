@@ -3,17 +3,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FurnitureService } from '../../services/furniture.service';
-import { CardFurniture } from '../../models/card-furniture';
+import { CardFurniture } from '../../models/card-furniture.model';
+import { FurnitureCardComponent } from '../../components/card-furniture/card-furniture.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FurnitureCardComponent],
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-
-export class HomeComponent implements OnInit {
+export class HomePage implements OnInit {
   cardFurnitures: CardFurniture[] = [];
   loading = true;
   error = false;
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
         console.error('Erreur lors de la récupération des données', err);
         this.error = true;
         this.loading = false;
-      }
+      },
     });
   }
 }

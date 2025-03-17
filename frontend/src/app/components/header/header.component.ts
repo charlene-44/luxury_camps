@@ -3,9 +3,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    NavbarComponent
-  ],
+  imports: [NavbarComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

@@ -1,8 +1,8 @@
 // frontend/src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pagesv1/home-page/home-page.component';
+import { HomePage } from './pages/home-page/home-page.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomePage },
   // other routes as needed
 ];
