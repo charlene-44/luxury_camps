@@ -12,11 +12,11 @@
       <h1 class="text-2xl font-bold mb-4 text-black">{{ furniture.name }}</h1>
 
       <!-- Galerie d'images -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <img *ngFor="let image of furniture.images" 
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+        <img *ngFor="let image of furniture.imageUrls" 
              [src]="image" 
-             [alt]="furniture.name"
-             class="w-full rounded-lg shadow-md">
+             [alt]="furniture.name + ' image'"
+             class="w-full object-cover rounded-lg shadow-md">
       </div>
 
       <!-- Informations principales -->

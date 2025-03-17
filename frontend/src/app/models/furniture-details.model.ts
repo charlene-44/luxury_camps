@@ -11,5 +11,5 @@ export interface FurnitureDetails {
   status: string;
   type: string;
   materials: string[];
-  images: string[];
+  imageUrls: string[];
 }
