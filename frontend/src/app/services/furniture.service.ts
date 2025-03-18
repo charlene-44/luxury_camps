@@ -26,6 +26,7 @@ export class FurnitureService {
             name: response.name || '',
             price: response.price || '',
             imageUrl: response.imageUrl || '',
+            status: response.status || 'Available'
           };
 
           return [cardFurniture];
@@ -37,6 +38,7 @@ export class FurnitureService {
           name: item.name || '',
           price: item.price || '',
           imageUrl: item.imageUrl || '',
+          status: item.status || 'Available'
         }));
       })
     );
@@ -44,5 +46,17 @@ export class FurnitureService {
 
   getFurnitureById(id: number): Observable<FurnitureDetails> {
     return this.http.get<FurnitureDetails>(`${this.apiUrl}/furniture/${id}`);
+  }
+
+  deleteFurniture(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/furniture/${id}`);
+  }
+
+  createFurniture(furniture: any): Observable<FurnitureDetails> {
+    return this.http.post<FurnitureDetails>(`${this.apiUrl}/furniture`, furniture);
+  }
+
+  updateFurniture(id: number, furniture: any): Observable<FurnitureDetails> {
+    return this.http.put<FurnitureDetails>(`${this.apiUrl}/furniture/${id}`, furniture);
   }
 }

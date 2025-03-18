@@ -37,7 +37,8 @@ public class FurnitureController {
                         furniture.getId(),
                         furniture.getName(), 
                         furniture.getPrice(), 
-                        imageUrl
+                        imageUrl,
+                        furniture.getStatus().toString()
                     );
                 })
                 .collect(Collectors.toList());

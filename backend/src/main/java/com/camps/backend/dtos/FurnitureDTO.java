@@ -7,20 +7,21 @@ public class FurnitureDTO {
     private String name;
     private double price;
     private String imageUrl;  // URL au lieu du byte[]
+    private String status;  // Ajout du statut
     // private String description;
     // private String size;
     // private String colour;
     // private String quantity;
-    // private String status;
     // private String type;
     // private String materials;
     // private String images;
 
-    public FurnitureDTO(Long id, String name, double price, String imageUrl) {
+    public FurnitureDTO(Long id, String name, double price, String imageUrl, String status) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.status = status;
     }
 
     // Getters & Setters
@@ -56,6 +57,14 @@ public class FurnitureDTO {
         this.imageUrl = imageUrl;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     // public String getDescription() {
     //     return description;
     // }
@@ -86,14 +95,6 @@ public class FurnitureDTO {
 
     // public void setQuantity(String quantity) {
     //     this.quantity = quantity;
-    // }
-
-    // public String getStatus() {
-    //     return status;
-    // }
-
-    // public void setStatus(String status) {
-    //     this.status = status;
     // }
 
     // public String getType() {
