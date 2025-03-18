@@ -13,6 +13,7 @@ import com.camps.backend.dtos.FurnitureCreateDTO;
 import com.camps.backend.errors.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -87,5 +88,34 @@ public class FurnitureController {
                 materialNames,
                 imageUrls
         );
+    }
+
+    @DeleteMapping("/furniture/{id}")
+        public ResponseEntity<Void> deleteFurniture(@PathVariable Long id) {
+        furnitureService.deleteFurniture(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    // Ajoutez cette méthode à votre FurnitureController.java
+    @PatchMapping("/furniture/{id}")
+    public ResponseEntity<FurnitureDTO> partialUpdateFurniture(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        // Appel au service pour mettre à jour le meuble
+        Furniture updated = furnitureService.partialUpdateFurniture(id, updates);
+        
+        // Extraction de l'URL de la première image si disponible
+        String imageUrl = null;
+        if (updated.getImages() != null && !updated.getImages().isEmpty()) {
+            imageUrl = updated.getImages().get(0).getUrl();
+        }
+        
+        // Conversion en DTO pour la réponse
+        FurnitureDTO dto = new FurnitureDTO(
+            updated.getId(),
+            updated.getName(),
+            updated.getPrice(),
+            imageUrl
+        );
+        
+        return ResponseEntity.ok(dto);
     }
 }

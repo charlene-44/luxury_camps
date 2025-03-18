@@ -165,6 +165,8 @@ INSERT INTO Image (id_furniture, url) VALUES
 
 -- Image pour la Table Hermes (id_furniture = 2)
 (2, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/table_appoint.png'),
+(2, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/table_appoint_detail_2.png'),
+(2, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/table_appoint_detail_3.png'),
 
 -- Image pour le Cabriolet Hermes (id_furniture = 3)
 (3, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/Cabriolet.webp');

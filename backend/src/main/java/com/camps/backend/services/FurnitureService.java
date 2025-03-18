@@ -14,6 +14,7 @@ import com.camps.backend.errors.ResourceNotFoundException;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -84,4 +85,83 @@ public class FurnitureService {
         
         return furnitureRepository.save(furniture);
     }
+
+    public void deleteFurniture(Long id) {
+        if (!furnitureRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Meuble non trouvé avec l'id: " + id);
+        }
+        furnitureRepository.deleteById(id);
+    }
+
+    // Ajoutez cette méthode à votre FurnitureService.java
+    public Furniture partialUpdateFurniture(Long id, Map<String, Object> updates) {
+        // Récupérer le meuble existant
+        Furniture furniture = furnitureRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Meuble non trouvé avec l'id: " + id));
+        
+        // Mettre à jour les champs simples si présents
+        if (updates.containsKey("name")) {
+            furniture.setName((String) updates.get("name"));
+        }
+        
+        if (updates.containsKey("description")) {
+            furniture.setDescription((String) updates.get("description"));
+        }
+        
+        if (updates.containsKey("size")) {
+            furniture.setSize((String) updates.get("size"));
+        }
+        
+        if (updates.containsKey("colour")) {
+            furniture.setColour((String) updates.get("colour"));
+        }
+        
+        if (updates.containsKey("quantity")) {
+            // Gestion de la conversion selon le type reçu
+            Object qtyObj = updates.get("quantity");
+            if (qtyObj instanceof Integer) {
+                furniture.setQuantity((Integer) qtyObj);
+            } else if (qtyObj instanceof String) {
+                furniture.setQuantity(Integer.parseInt((String) qtyObj));
+            }
+        }
+        
+        if (updates.containsKey("price")) {
+            // Gestion de la conversion selon le type reçu
+            Object priceObj = updates.get("price");
+            if (priceObj instanceof Number) {
+                furniture.setPrice(((Number) priceObj).doubleValue());
+            } else if (priceObj instanceof String) {
+                furniture.setPrice(Double.parseDouble((String) priceObj));
+            }
+        }
+        
+        if (updates.containsKey("status")) {
+            String statusStr = (String) updates.get("status");
+            try {
+                furniture.setStatus(FurnitureStatus.valueOf(statusStr.toUpperCase().replace(" ", "_")));
+            } catch (IllegalArgumentException ex) {
+                throw new IllegalArgumentException("Statut invalide: " + statusStr);
+            }
+        }
+        
+        // Mettre à jour le type si présent
+        if (updates.containsKey("typeId")) {
+            Object typeIdObj = updates.get("typeId");
+            Long typeId;
+            if (typeIdObj instanceof Number) {
+                typeId = ((Number) typeIdObj).longValue();
+            } else {
+                typeId = Long.parseLong(typeIdObj.toString());
+            }
+            
+            FurnitureType type = furnitureTypeRepository.findById(typeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Type de meuble non trouvé avec l'id: " + typeId));
+            furniture.setType(type);
+        }
+        
+        // Sauvegarder et retourner le meuble mis à jour
+        return furnitureRepository.save(furniture);
+    }
+
 }
