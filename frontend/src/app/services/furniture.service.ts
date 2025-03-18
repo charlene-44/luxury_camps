@@ -2,10 +2,12 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { CardFurniture } from '../models/card-furniture.model';
 import { environment } from '../../environments/environment';
 import { FurnitureDetails } from '../models/furniture-details.model';
+import { FurnitureType } from '../models/furniture-type.model';
+import { Material } from '../models/material.model';
 
 @Injectable({
   providedIn: 'root',
@@ -48,5 +50,45 @@ export class FurnitureService {
 
   deleteFurniture(id: number) {
     return this.http.delete(`${this.apiUrl}/furniture/${id}`);
+  }
+
+  // New method to create furniture
+  createFurniture(furnitureData: any): Observable<FurnitureDetails> {
+    return this.http.post<FurnitureDetails>(
+      `${this.apiUrl}/furniture`,
+      furnitureData
+    );
+  }
+
+  // New method to load furniture types
+  getFurnitureTypes(): Observable<FurnitureType[]> {
+    // return this.http.get<FurnitureType[]>(`${this.apiUrl}/furniture-types`);
+
+    const furnitureTypes: FurnitureType[] = [
+      {
+        id: 1,
+        name: 'Chaise',
+      }
+    ]
+
+    return of(furnitureTypes);
+  }
+
+  // New method to load materials
+  getMaterials(): Observable<Material[]> {
+    // return this.http.get<Material[]>(`${this.apiUrl}/materials`);
+
+    const materials: Material[] = [
+      {
+        id: 1,
+        name: 'Acier',
+      },
+      {
+        id: 2,
+        name: 'Aluminium',
+      }
+    ]
+
+    return of(materials);
   }
 }
