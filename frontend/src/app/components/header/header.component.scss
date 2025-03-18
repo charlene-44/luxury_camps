@@ -1,0 +1,7 @@
+// frontend\src\app\components\header\header.component.scss
+
+@use "tailwindcss" as *;
+
+@utility hero {
+  @apply w-full h-90 object-cover mb-16;
+}

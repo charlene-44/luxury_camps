@@ -1,5 +1,5 @@
 {
   "java.compile.nullAnalysis.mode": "automatic",
   "java.configuration.updateBuildConfiguration": "interactive",
-  "cSpell.words": ["dtos", "tailwindcss"]
+  "cSpell.words": ["dtos", "Jost", "primeng", "tailwindcss"]
 }
