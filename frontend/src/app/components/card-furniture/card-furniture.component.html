@@ -1,4 +1,4 @@
-<!-- frontend/src/app/components/furniture-card/furniture-card.component.html -->
+<!-- frontend/src/app/components/card-furniture/card-furniture.component.html -->
 
 <div class="bg-orange-50 p-4 rounded-lg shadow-lg">
   <strong class="block text-lg font-semibold mb-2 text-center">{{
@@ -11,8 +11,10 @@
   />
   <div class="flex items-center justify-between mt-3">
     <p class="text-sm font-bold">{{ furniture.price }}€</p>
-    <a [routerLink]="['/furniture', furniture.id]" 
-       class="bg-emerald-950 hover:bg-emerald-900 text-white font-bold py-2 px-4 rounded transition duration-300">
+    <a
+      [routerLink]="['/furniture', furniture.id]"
+      class="bg-emerald-950 hover:bg-emerald-900 text-white font-bold py-2 px-4 rounded transition duration-300"
+    >
       Voir détails
     </a>
   </div>

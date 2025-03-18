@@ -1,3 +1,5 @@
+// frontend\src\app\models\furniture-details.model.ts
+
 export interface FurnitureDetails {
   id: number;
   name: string;
@@ -9,5 +11,5 @@ export interface FurnitureDetails {
   status: string;
   type: string;
   materials: string[];
-  images: string[];
-} 
+  imageUrls: string[];
+}

@@ -28,6 +28,7 @@ export class HomePage implements OnInit {
     this.furnitureService.getFurnitures().subscribe({
       next: (data) => {
         this.cardFurnitures = data;
+        // data.forEach((item) => console.log('Furniture id:', item.id));
         this.loading = false;
       },
       error: (err) => {
