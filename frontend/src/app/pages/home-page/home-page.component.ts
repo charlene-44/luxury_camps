@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
         console.error('Erreur lors de la récupération des données', err);
         this.error = true;
         this.loading = false;
-      },
+      }
     });
   }
 }
