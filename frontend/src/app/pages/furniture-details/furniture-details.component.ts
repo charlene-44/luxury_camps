@@ -3,18 +3,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { GalleriaModule } from 'primeng/galleria';
 import { FurnitureService } from '../../services/furniture.service';
 import { FurnitureDetails } from '../../models/furniture-details.model';
 
 @Component({
   selector: 'app-furniture-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GalleriaModule],
   templateUrl: './furniture-details.component.html',
-  styleUrls: ['./furniture-details.component.scss'],
+  styleUrl: './furniture-details.component.scss',
 })
 export class FurnitureDetailsPage implements OnInit {
   furniture?: FurnitureDetails;
+  images: any[] = [];
+  responsiveOptions: any[] = [
+    { breakpoint: '1300px', numVisible: 4 },
+    { breakpoint: '575px', numVisible: 1 },
+  ];
   loading = true;
   error = false;
 
@@ -39,6 +45,15 @@ export class FurnitureDetailsPage implements OnInit {
     this.furnitureService.getFurnitureById(id).subscribe({
       next: (data) => {
         this.furniture = data;
+        // Transform the array of image URLs into objects required by p-galleria
+        if (this.furniture.imageUrls && this.furniture.imageUrls.length > 0) {
+          this.images = this.furniture.imageUrls.map((url) => ({
+            itemImageSrc: url,
+            thumbnailImageSrc: url,
+            alt: this.furniture?.name,
+            title: this.furniture?.name,
+          }));
+        }
         this.loading = false;
       },
       error: (error) => {

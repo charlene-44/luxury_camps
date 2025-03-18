@@ -1,1 +1,57 @@
 // frontend\src\app\pages\furniture-details\furniture-details.component.scss
+
+@charset "utf-8";
+@use "tailwindcss" as *;
+
+@utility details-section {
+    @apply max-w-4xl mx-auto;
+}
+
+@utility details-section-wrapper {
+    @apply bg-orange-50 rounded-lg shadow-lg p-6;
+}
+
+@utility details-section-header {
+    @apply text-2xl font-bold mb-4 text-black;
+}
+
+@utility gallery {
+    @apply flex justify-center;
+}
+
+@utility furniture-image {
+    @apply w-full object-cover rounded-lg shadow-md;
+}
+
+@utility furniture-details-wrapper {
+    @apply grid md:grid-cols-2 gap-6 mt-10;
+}
+
+@utility description-title {
+    @apply text-xl font-semibold mb-2 text-black;
+}
+
+@utility description-text {
+    @apply text-gray-700 text-black;
+}
+
+@utility price-title {
+    @apply font-semibold text-black;
+}
+
+@utility price-text {
+    @apply text-emerald-600 text-black;
+}
+
+@utility status {
+    @apply font-medium text-black;
+}
+
+@utility quantity {
+    @apply font-medium text-black;
+}
+
+@utility fields-title {
+    @apply text-xl font-semibold mb-2 text-black;
+}
+
