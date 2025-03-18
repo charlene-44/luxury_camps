@@ -4,7 +4,10 @@
   class="bg-emerald-950 text-white flex items-center justify-between p-4 shadow-lg"
 >
   <!-- Section gauche : Logo -->
-  <button (click)="gotoHomepage()" class="flex items-center space-x-5 cursor-pointer">
+  <button
+    (click)="gotoHomepage()"
+    class="flex items-center space-x-5 cursor-pointer"
+  >
     <img src="assets/logo.png" alt="Logo canapé" class="h-12 w-12" />
     <span class="text-lg font-bold">LUXURY CAMPS</span>
   </button>
@@ -19,6 +22,22 @@
       class="px-4 py-2 w-50 rounded-lg text-white text-sm placeholder-white placeholder:text-lg focus:outline-none focus:ring-2 focus:ring-emerald-700 text-white"
       style="font-family: 'Open Sans', sans-serif"
     />
+
+    <!-- Bouton Administrateur -->
+    <button
+      (click)="gotoAdminPage()"
+      class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
+    >
+      Back-office
+    </button>
+
+    <!-- Bouton ajout de meuble -->
+    <button
+      (click)="gotoFurnitureCreationPage()"
+      class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
+    >
+      Ajouter un meuble
+    </button>
 
     <!-- Icône Utilisateur -->
     <button>

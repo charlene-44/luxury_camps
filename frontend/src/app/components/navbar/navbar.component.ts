@@ -15,4 +15,12 @@ export class NavbarComponent {
   gotoHomepage() {
     this.router.navigate(['/']);
   }
+
+  gotoAdminPage() {
+    this.router.navigate(['/furniture-management']);
+  }
+  
+  gotoFurnitureCreationPage() {
+    this.router.navigate(['/furniture-add']);
+  }
 }

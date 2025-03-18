@@ -1,3 +1,5 @@
+// frontend\src\app\components\navbar\navbar.component.spec.ts
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
