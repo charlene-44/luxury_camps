@@ -45,4 +45,8 @@ export class FurnitureService {
   getFurnitureById(id: number): Observable<FurnitureDetails> {
     return this.http.get<FurnitureDetails>(`${this.apiUrl}/furniture/${id}`);
   }
+
+  deleteFurniture(id: number) {
+    return this.http.delete(`${this.apiUrl}/furniture/${id}`);
+  }
 }
