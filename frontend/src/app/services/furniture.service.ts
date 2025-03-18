@@ -26,7 +26,6 @@ export class FurnitureService {
             name: response.name || '',
             price: response.price || '',
             imageUrl: response.imageUrl || '',
-            description: response.description || ''
           };
 
           return [cardFurniture];
@@ -38,7 +37,6 @@ export class FurnitureService {
           name: item.name || '',
           price: item.price || '',
           imageUrl: item.imageUrl || '',
-          description: item.description || ''
         }));
       })
     );
