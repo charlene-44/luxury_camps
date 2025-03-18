@@ -67,9 +67,13 @@ export class FurnitureService {
     const furnitureTypes: FurnitureType[] = [
       {
         id: 1,
-        name: 'Chaise',
-      }
-    ]
+        name: 'Sofa',
+      },
+      {
+        id: 2,
+        name: 'Table',
+      },
+    ];
 
     return of(furnitureTypes);
   }
@@ -81,14 +85,18 @@ export class FurnitureService {
     const materials: Material[] = [
       {
         id: 1,
-        name: 'Acier',
+        name: 'Leather',
       },
       {
         id: 2,
-        name: 'Aluminium',
-      }
-    ]
+        name: 'Wood',
+      },
+    ];
 
     return of(materials);
+  }
+
+  updateFurniture(id: number, furnitureData: any) {
+    return this.http.patch(`${this.apiUrl}/furniture/${id}`, furnitureData);
   }
 }
