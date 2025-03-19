@@ -74,13 +74,15 @@ public class FurnitureService {
         
         // Création des images à partir des URLs
         if (dto.getImageUrls() != null && !dto.getImageUrls().isEmpty()) {
-            List<Image> images = dto.getImageUrls().stream().map(url -> {
+            System.out.println("Nombre d'URLs d'images reçues : " + dto.getImageUrls().size());
+            
+            dto.getImageUrls().forEach(url -> {
                 Image img = new Image();
                 img.setUrl(url);
-                img.setFurniture(furniture); // association bidirectionnelle
-                return img;
-            }).collect(Collectors.toList());
-            furniture.setImages(images);
+                furniture.addImage(img); // Utiliser la méthode helper
+            });
+            
+            System.out.println("Nombre d'images créées : " + furniture.getImages().size());
         }
         
         return furnitureRepository.save(furniture);
