@@ -16,17 +16,25 @@
         <p-galleria
           [value]="images"
           [responsiveOptions]="responsiveOptions"
-          [containerStyle]="{ 'max-width': '300px' }"
+          [containerStyle]="{ 'max-width': '600px' }"
           [numVisible]="3"
+          [showItemNavigators]="true"
+          [thumbnailsPosition]="'bottom'"
+          styleClass="custom-galleria"
+          
         >
           <ng-template pTemplate="item" let-item>
-            <img [src]="item.itemImageSrc" style="width: 100%" />
+            <div class="custom-galleria-item">
+              <img [src]="item.itemImageSrc" class="custom-galleria-image" />
+            </div>
           </ng-template>
           <ng-template pTemplate="thumbnail" let-item>
             <img [src]="item.thumbnailImageSrc" />
           </ng-template>
         </p-galleria>
       </div>
+
+      
 
       <!-- Informations principales -->
       <div class="furniture-details-wrapper">

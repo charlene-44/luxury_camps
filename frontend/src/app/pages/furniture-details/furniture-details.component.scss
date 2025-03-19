@@ -54,4 +54,21 @@
 @utility fields-title {
     @apply text-xl font-semibold mb-2 text-black;
 }
+.custom-galleria-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* hauteur fixe du conteneur */
+  }
+  
+  .custom-galleria-image {
+    max-width: 600px; /* largeur maximale spécifique que vous souhaitez */
+    max-height: 350px; /* hauteur maximale de l'image */
+    width: auto; /* permet à l'image de conserver ses proportions */
+    height: auto; /* permet à l'image de conserver ses proportions */
+    object-fit: contain;
+  }
+p-galleria {
+    --p-galleria-thumbnails-content-background: #022c22;
+  }
 
