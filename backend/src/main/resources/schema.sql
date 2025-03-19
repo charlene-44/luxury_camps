@@ -280,7 +280,7 @@ INSERT INTO Image (id_furniture, url) VALUES
 (8, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/secretaire.webp'),
 (8, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Hermes/secretaire.webp'),
 
--- Image pour le plateau Dior (id_furniture = 9)
+-- Image pour le videpoche Dior (id_furniture = 9)
 (9, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Dior/videpoche.webp'),
 (9, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Dior/videpoche_detail1.webp'),
 (9, 'https://raw.githubusercontent.com/charlene-44/luxury_camps/dev/frontend/public/assets/Dior/videpoche_detail2.webp');
