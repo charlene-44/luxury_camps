@@ -6,6 +6,7 @@ import { FurnitureDetailsPage } from './pages/furniture-details/furniture-detail
 import { FurnitureManagementPage } from './pages/furniture-management/furniture-management.component';
 import { FurnitureAddPage } from './pages/furniture-add/furniture-add.component';
 import { FurnitureEditPage } from './pages/furniture-edit/furniture-edit.component';
+import { RecrutementComponent } from './pages/recrutement/recrutement.component';
 
 export const routes: Routes = [
   { path: '', component: HomePage },
@@ -13,5 +14,7 @@ export const routes: Routes = [
   { path: 'furniture-management', component: FurnitureManagementPage },
   { path: 'furniture-add', component: FurnitureAddPage },
   { path: 'furniture-edit/:id', component: FurnitureEditPage },
+  { path: 'recrutement', component: RecrutementComponent },
+
   // other routes as needed
 ];
