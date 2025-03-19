@@ -1,0 +1,26 @@
+@charset "utf-8";
+@use "tailwindcss" as *;
+
+@utility footer {
+  @apply bg-emerald-950 text-white py-6 shadow-lg border-t border-gray-700 mt-6;
+}
+
+@utility footer-container {
+  @apply container mx-auto px-4 text-center;
+}
+
+@utility footer-logo {
+  @apply mx-auto mb-4 w-12 h-12;
+}
+
+@utility footer-text {
+  @apply text-sm;
+}
+
+@utility footer-links {
+  @apply flex justify-center space-x-6 mt-4;
+}
+
+@utility footer-link {
+  @apply hover:underline;
+}
