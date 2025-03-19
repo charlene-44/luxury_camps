@@ -42,7 +42,7 @@ export class FurnitureDetailsPage implements OnInit {
   }
 
   private loadFurnitureDetails(id: number) {
-    this.furnitureService.getFurnitureById(id).subscribe({
+    this.furnitureService.getFurnitureByIdForDetails(id).subscribe({
       next: (data) => {
         this.furniture = data;
         // Transform the array of image URLs into objects required by p-galleria

@@ -64,15 +64,17 @@ export class FurnitureEditPage implements OnInit {
   }
 
   loadFurnitureDetails(): void {
-    this.furnitureService.getFurnitureById(this.furnitureId).subscribe({
-      next: (data: FurnitureDetails) => {
-        this.initialData = data;
-      },
-      error: (err) => {
-        console.error('Erreur lors du chargement des détails du meuble', err);
-        this.error = 'Erreur lors du chargement des détails du meuble.';
-      },
-    });
+    this.furnitureService
+      .getFurnitureByIdForForm(this.furnitureId)
+      .subscribe({
+        next: (data: FurnitureDetails) => {
+          this.initialData = data;
+        },
+        error: (err) => {
+          console.error('Erreur lors du chargement des détails du meuble', err);
+          this.error = 'Erreur lors du chargement des détails du meuble.';
+        },
+      });
   }
 
   // Use the form data emitted from the child component directly.

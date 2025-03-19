@@ -43,7 +43,16 @@ export class FurnitureService {
     );
   }
 
-  getFurnitureById(id: number): Observable<FurnitureDetails> {
+  getFurnitureByIdForDetails(id: number): Observable<FurnitureDetails> {
+    return this.http.get<any>(`${this.apiUrl}/furniture/${id}`).pipe(
+      map((response) => ({
+        ...response,
+        materials: response.materialNames,
+      }))
+    );
+  }
+  
+  getFurnitureByIdForForm(id: number): Observable<FurnitureDetails> {
     return this.http.get<any>(`${this.apiUrl}/furniture/${id}`).pipe(
       map((response) => ({
         ...response,
