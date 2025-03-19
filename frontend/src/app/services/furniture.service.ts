@@ -61,11 +61,37 @@ export class FurnitureService {
   // Méthode pour charger les types de meubles
   getFurnitureTypes(): Observable<FurnitureType[]> {
     return this.http.get<FurnitureType[]>(`${this.apiUrl}/furniture-types`);
+
+    // const furnitureTypes: FurnitureType[] = [
+    //   {
+    //     id: 1,
+    //     name: 'Sofa',
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'Table',
+    //   },
+    // ];
+
+    // return of(furnitureTypes);
   }
 
   // Méthode pour charger les matériaux
   getMaterials(): Observable<Material[]> {
     return this.http.get<Material[]>(`${this.apiUrl}/materials`);
+
+    // const materials: Material[] = [
+    //   {
+    //     id: 1,
+    //     name: 'Leather',
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'Wood',
+    //   },
+    // ];
+
+    // return of(materials);
   }
 
   updateFurniture(id: number, furnitureData: any) {
