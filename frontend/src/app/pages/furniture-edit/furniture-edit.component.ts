@@ -82,7 +82,6 @@ export class FurnitureEditPage implements OnInit {
       return;
     }
     this.loading = true;
-    console.log('Payload being sent:', formData);
     this.furnitureService
       .updateFurniture(this.furnitureId, formData)
       .subscribe({

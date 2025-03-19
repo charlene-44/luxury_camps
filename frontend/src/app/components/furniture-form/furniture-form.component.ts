@@ -75,6 +75,13 @@ export class FurnitureFormComponent implements OnInit, OnChanges {
   }
 
   private populateForm(data: any): void {
+    // Map backend status to French display status
+    const statusMap: { [key: string]: string } = {
+      AVAILABLE: 'Disponible',
+      OUT_OF_STOCK: 'Rupture de stock',
+      DISCONTINUED: 'Discontinué',
+    };
+
     this.furnitureForm.patchValue({
       name: data.name,
       description: data.description,
@@ -82,7 +89,7 @@ export class FurnitureFormComponent implements OnInit, OnChanges {
       colour: data.colour,
       quantity: data.quantity,
       price: data.price,
-      status: data.status,
+      status: statusMap[data.status] || data.status,
       typeId: data.typeId ? data.typeId : this.getTypeIdFromTypeName(data.type),
     });
     const materialIdsArray = this.furnitureForm.get('materialIds') as FormArray;

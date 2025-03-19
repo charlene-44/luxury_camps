@@ -44,7 +44,12 @@ export class FurnitureService {
   }
 
   getFurnitureById(id: number): Observable<FurnitureDetails> {
-    return this.http.get<FurnitureDetails>(`${this.apiUrl}/furniture/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/furniture/${id}`).pipe(
+      map((response) => ({
+        ...response,
+        materials: response.materialIds, // create a new property called materials
+      }))
+    );
   }
 
   deleteFurniture(id: number) {

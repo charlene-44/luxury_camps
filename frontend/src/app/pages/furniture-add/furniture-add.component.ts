@@ -59,7 +59,6 @@ export class FurnitureAddPage implements OnInit {
       return;
     }
     this.loading = true;
-    console.log('Payload being sent:', formData);
     this.furnitureService.createFurniture(formData).subscribe({
       next: (result: FurnitureDetails) => {
         this.loading = false;
