@@ -1,5 +1,3 @@
-// frontend/src/app/services/furniture.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
@@ -52,7 +50,7 @@ export class FurnitureService {
     return this.http.delete(`${this.apiUrl}/furniture/${id}`);
   }
 
-  // New method to create furniture
+  // Méthode pour créer un meuble
   createFurniture(furnitureData: any): Observable<FurnitureDetails> {
     return this.http.post<FurnitureDetails>(
       `${this.apiUrl}/furniture`,
@@ -60,40 +58,14 @@ export class FurnitureService {
     );
   }
 
-  // New method to load furniture types
+  // Méthode pour charger les types de meubles
   getFurnitureTypes(): Observable<FurnitureType[]> {
-    // return this.http.get<FurnitureType[]>(`${this.apiUrl}/furniture-types`);
-
-    const furnitureTypes: FurnitureType[] = [
-      {
-        id: 1,
-        name: 'Sofa',
-      },
-      {
-        id: 2,
-        name: 'Table',
-      },
-    ];
-
-    return of(furnitureTypes);
+    return this.http.get<FurnitureType[]>(`${this.apiUrl}/furniture-types`);
   }
 
-  // New method to load materials
+  // Méthode pour charger les matériaux
   getMaterials(): Observable<Material[]> {
-    // return this.http.get<Material[]>(`${this.apiUrl}/materials`);
-
-    const materials: Material[] = [
-      {
-        id: 1,
-        name: 'Leather',
-      },
-      {
-        id: 2,
-        name: 'Wood',
-      },
-    ];
-
-    return of(materials);
+    return this.http.get<Material[]>(`${this.apiUrl}/materials`);
   }
 
   updateFurniture(id: number, furnitureData: any) {
