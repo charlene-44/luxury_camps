@@ -14,15 +14,17 @@ import { FurnitureService } from '../../services/furniture.service';
 import { FurnitureDetails } from '../../models/furniture-details.model';
 import { FurnitureType } from '../../models/furniture-type.model';
 import { Material } from '../../models/material.model';
+import { FurnitureFormComponent } from '../../components/furniture-form/furniture-form.component';
 
 @Component({
   selector: 'app-furniture-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FurnitureFormComponent],
   templateUrl: './furniture-edit.component.html',
   styleUrls: ['./furniture-edit.component.scss'],
 })
 export class FurnitureEditPage implements OnInit {
+  initialData: any = null;
   furnitureForm!: FormGroup;
   furnitureTypes: FurnitureType[] = [];
   materials: Material[] = [];
@@ -123,18 +125,7 @@ export class FurnitureEditPage implements OnInit {
     this.furnitureService.getFurnitureById(this.furnitureId).subscribe({
       next: (data: FurnitureDetails) => {
         // Préremplir les champs du formulaire avec les infos du meuble
-        this.furnitureForm.patchValue({
-          name: data.name,
-          description: data.description,
-          size: data.size,
-          colour: data.colour,
-          quantity: data.quantity,
-          price: data.price,
-          status: data.status,
-          // Ici, on suppose que le détail retourne le nom du type.
-          // Si l'API renvoie également l'ID du type, utilisez-le directement.
-          typeId: this.getTypeIdFromTypeName(data.type),
-        });
+        this.initialData = data;
 
         // Pour les matériaux, on suppose que data.materials contient les IDs (ou sinon adapter)
         const materialIdsArray = this.furnitureForm.get(
@@ -164,8 +155,8 @@ export class FurnitureEditPage implements OnInit {
     return found ? found.id : null;
   }
 
-  submitForm(): void {
-    if (this.furnitureForm.invalid) {
+  submitForm(formData: any): void {
+    if (!formData) {
       this.error = 'Veuillez remplir tous les champs requis.';
       return;
     }

@@ -14,11 +14,12 @@ import { FurnitureService } from '../../services/furniture.service';
 import { FurnitureDetails } from '../../models/furniture-details.model';
 import { FurnitureType } from '../../models/furniture-type.model';
 import { Material } from '../../models/material.model';
+import { FurnitureFormComponent } from '../../components/furniture-form/furniture-form.component';
 
 @Component({
   selector: 'app-furniture-add',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FurnitureFormComponent],
   templateUrl: './furniture-add.component.html',
   styleUrls: ['./furniture-add.component.scss'],
 })
@@ -102,9 +103,9 @@ export class FurnitureAddPage implements OnInit {
     });
   }
 
-  submitForm(): void {
-    if (this.furnitureForm.invalid) {
-      this.error = 'Please fill in all required fields.';
+  submitForm(formData: any): void {
+    if (!formData) {
+      this.error = 'Veuillez remplir tous les champs requis.';
       return;
     }
     this.loading = true;
