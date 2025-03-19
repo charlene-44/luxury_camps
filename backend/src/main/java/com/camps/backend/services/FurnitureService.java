@@ -51,7 +51,7 @@ public class FurnitureService {
         furniture.setQuantity(dto.getQuantity());
         furniture.setPrice(dto.getPrice());
         
-        // Conversion du statut (en adaptant par exemple "Out of stock" en OUT_OF_STOCK)
+        // Conversion du statut (en adaptant par exemple "Rupture de stock" en OUT_OF_STOCK)
         try {
             furniture.setStatus(FurnitureStatus.valueOf(dto.getStatus().toUpperCase().replace(" ", "_")));
         } catch (IllegalArgumentException ex) {

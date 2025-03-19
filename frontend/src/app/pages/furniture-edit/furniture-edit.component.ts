@@ -28,7 +28,7 @@ export class FurnitureEditPage implements OnInit {
   furnitureForm!: FormGroup;
   furnitureTypes: FurnitureType[] = [];
   materials: Material[] = [];
-  statuses: string[] = ['Available', 'Out of stock', 'Discontinued'];
+  statuses: string[] = ['Disponible', 'Rupture de stock', 'Discontinué'];
   error: string = '';
   loading: boolean = false;
   furnitureId!: number;
@@ -108,7 +108,8 @@ export class FurnitureEditPage implements OnInit {
       next: (data) => {
         this.furnitureTypes = data;
       },
-      error: (err) => console.error('Error loading types:', err),
+      error: (err) =>
+        console.error('Erreur lors du chargement des types:', err),
     });
   }
 
@@ -117,7 +118,8 @@ export class FurnitureEditPage implements OnInit {
       next: (data) => {
         this.materials = data;
       },
-      error: (err) => console.error('Error loading materials:', err),
+      error: (err) =>
+        console.error('Erreur lors du chargement des matériaux:', err),
     });
   }
 
@@ -143,7 +145,7 @@ export class FurnitureEditPage implements OnInit {
         }
       },
       error: (err) => {
-        console.error(err);
+        console.error('Erreur lors du chargement des détails du meuble', err);
         this.error = 'Erreur lors du chargement des détails du meuble.';
       },
     });
@@ -171,7 +173,7 @@ export class FurnitureEditPage implements OnInit {
           this.router.navigate(['/furniture-management']);
         },
         error: (err) => {
-          console.error(err);
+          console.error('Erreur lors de la modification du meuble', err);
           this.error =
             "Une erreur s'est produite lors de la modification du meuble.";
           this.loading = false;

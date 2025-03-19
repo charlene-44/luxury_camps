@@ -33,7 +33,7 @@ export class FurnitureDetailsPage implements OnInit {
     const idParam = this.route.snapshot.paramMap.get('id');
     const id = Number(idParam);
     if (!idParam || isNaN(id) || id <= 0) {
-      console.error('Invalid or missing furniture id.');
+      console.error('ID de meuble invalide ou manquant.');
       this.error = true;
       this.loading = false;
       return;
@@ -63,5 +63,4 @@ export class FurnitureDetailsPage implements OnInit {
       },
     });
   }
-  
 }

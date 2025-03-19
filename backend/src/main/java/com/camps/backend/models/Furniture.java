@@ -38,8 +38,8 @@ public class Furniture {
     @Column(nullable = false)
     private double price;
 
-    // La colonne "status" est de type ENUM('Available', 'Out of stock', 'Discontinued')
-    @Column(nullable = false, columnDefinition = "ENUM('Available', 'Out of stock', 'Discontinued')")
+    // La colonne "status" est de type ENUM('Disponible', 'Rupture de stock', 'Discontinué')
+    @Column(nullable = false, columnDefinition = "ENUM('Disponible', 'Rupture de stock', 'Discontinué')")
     @Convert(converter = FurnitureStatusConverter.class)
     private FurnitureStatus status;
 

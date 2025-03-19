@@ -31,7 +31,11 @@ export class FurnitureFormComponent implements OnInit, OnChanges {
   @Input() initialData: any = null;
   @Input() furnitureTypes: FurnitureType[] = [];
   @Input() materials: Material[] = [];
-  @Input() statuses: string[] = ['Available', 'Out of stock', 'Discontinued'];
+  @Input() statuses: string[] = [
+    'Disponible',
+    'Rupture de stock',
+    'Discontinué',
+  ];
   @Input() loading: boolean = false;
   @Output() formSubmit: EventEmitter<any> = new EventEmitter<any>();
 
