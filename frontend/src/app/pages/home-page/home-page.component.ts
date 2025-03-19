@@ -28,14 +28,13 @@ export class HomePage implements OnInit {
     this.furnitureService.getFurnitures().subscribe({
       next: (data) => {
         this.cardFurnitures = data;
-        // data.forEach((item) => console.log('Furniture id:', item.id));
         this.loading = false;
       },
       error: (err) => {
         console.error('Erreur lors de la récupération des données', err);
         this.error = true;
         this.loading = false;
-      }
+      },
     });
   }
 }
