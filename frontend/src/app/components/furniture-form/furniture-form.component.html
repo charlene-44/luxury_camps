@@ -89,13 +89,23 @@
       <label class="field-title"
         >Statut
 
-        <select formControlName="status" class="field-input">
-          <option value="">Sélectionner un statut</option>
+        <select formControlName="status" class="field-input" required>
+          <option value="" disabled selected>Sélectionner un statut</option>
           <option *ngFor="let status of statuses" [value]="status">
             {{ status }}
           </option>
         </select>
       </label>
+      <!-- Display an error message if the field is touched but still invalid -->
+      <div
+        *ngIf="
+          furnitureForm.get('status')?.touched &&
+          furnitureForm.get('status')?.invalid
+        "
+        class="error-text"
+      >
+        Le statut est requis.
+      </div>
     </div>
 
     <!-- Type -->
@@ -166,11 +176,15 @@
     <div class="form-footer">
       <button
         type="submit"
-        [disabled]="loading"
+        [disabled]="loading || furnitureForm.invalid"
         class="add-furniture-button"
       >
         {{ loading ? "Envoi en cours..." : "Valider" }}
       </button>
     </div>
   </form>
+
+  <div class="debug">
+    {{ furnitureForm.value | json }}
+  </div>
 </div>

@@ -50,13 +50,23 @@ public class FurnitureService {
         furniture.setColour(dto.getColour());
         furniture.setQuantity(dto.getQuantity());
         furniture.setPrice(dto.getPrice());
+
+        // Check if the status is provided
+        if (dto.getStatus() == null || dto.getStatus().trim().isEmpty()) {
+            throw new IllegalArgumentException("Le statut est requis et ne peut pas être vide.");
+        }
         
         // Conversion du statut (en adaptant par exemple "Rupture de stock" en OUT_OF_STOCK)
-        try {
-            furniture.setStatus(FurnitureStatus.valueOf(dto.getStatus().toUpperCase().replace(" ", "_")));
-        } catch (IllegalArgumentException ex) {
+        if ("Disponible".equalsIgnoreCase(dto.getStatus())) {
+            furniture.setStatus(FurnitureStatus.AVAILABLE);
+        } else if ("Rupture de stock".equalsIgnoreCase(dto.getStatus())) {
+            furniture.setStatus(FurnitureStatus.OUT_OF_STOCK);
+        } else if ("Discontinué".equalsIgnoreCase(dto.getStatus())) {
+            furniture.setStatus(FurnitureStatus.DISCONTINUED);
+        } else {
             throw new IllegalArgumentException("Statut invalide: " + dto.getStatus());
         }
+
         
         // Récupération et affectation du FurnitureType
         FurnitureType type = furnitureTypeRepository.findById(dto.getTypeId())
@@ -140,12 +150,18 @@ public class FurnitureService {
         
         if (updates.containsKey("status")) {
             String statusStr = (String) updates.get("status");
-            try {
-                furniture.setStatus(FurnitureStatus.valueOf(statusStr.toUpperCase().replace(" ", "_")));
-            } catch (IllegalArgumentException ex) {
+            // Conversion du statut en fonction de la chaîne reçue
+            if ("Disponible".equalsIgnoreCase(statusStr)) {
+                furniture.setStatus(FurnitureStatus.AVAILABLE);
+            } else if ("Rupture de stock".equalsIgnoreCase(statusStr)) {
+                furniture.setStatus(FurnitureStatus.OUT_OF_STOCK);
+            } else if ("Discontinué".equalsIgnoreCase(statusStr)) {
+                furniture.setStatus(FurnitureStatus.DISCONTINUED);
+            } else {
                 throw new IllegalArgumentException("Statut invalide: " + statusStr);
             }
         }
+
         
         // Mettre à jour le type si présent
         if (updates.containsKey("typeId")) {
