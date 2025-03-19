@@ -1,1 +1,15 @@
+// frontend\src\styles.scss
+
 /* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
+@use "tailwindcss" as *;
+
+@layer base {
+  * {
+    font-family: "Jost", sans-serif;
+  }
+}
+
+@utility app-wrapper {
+  @apply bg-emerald-950 text-white;
+}

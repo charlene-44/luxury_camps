@@ -1,0 +1,46 @@
+{
+    "furnitures": [
+      {
+        "id": 1,
+        "name": "Fauteuil Élégance",
+        "price": 699.99,
+        "image": "https://example.com/images/fauteuil-elegance.jpg",
+        "description": "Un fauteuil confortable avec un design moderne et élégant, parfait pour votre salon."
+      },
+      {
+        "id": 2,
+        "name": "Table Basse Minimaliste",
+        "price": 349.50,
+        "image": "https://example.com/images/table-basse-minimaliste.jpg",
+        "description": "Une table basse au design épuré avec plateau en verre trempé et pieds en métal noir."
+      },
+      {
+        "id": 3,
+        "name": "Lampadaire Ambiance",
+        "price": 129.99,
+        "image": "https://example.com/images/lampadaire-ambiance.jpg",
+        "description": "Lampadaire ajustable avec variateur d'intensité pour créer l'ambiance parfaite dans votre intérieur."
+      },
+      {
+        "id": 4,
+        "name": "Canapé Confort Premium",
+        "price": 1299.00,
+        "image": "https://example.com/images/canape-confort.jpg",
+        "description": "Canapé 3 places en tissu premium avec assises profondes et coussins déhoussables."
+      },
+      {
+        "id": 5,
+        "name": "Bibliothèque Modulaire",
+        "price": 459.75,
+        "image": "https://example.com/images/bibliotheque-modulaire.jpg",
+        "description": "Bibliothèque personnalisable avec étagères ajustables, idéale pour organiser vos livres et objets décoratifs."
+      },
+      {
+        "id": 6,
+        "name": "Chaise de Bureau Ergonomique",
+        "price": 249.99,
+        "image": "https://example.com/images/chaise-bureau-ergo.jpg",
+        "description": "Chaise de bureau avec soutien lombaire et accoudoirs réglables pour un confort optimal pendant de longues heures de travail."
+      }
+    ]
+  }
