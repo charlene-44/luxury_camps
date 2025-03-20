@@ -35,7 +35,7 @@ Le code est structuré en plusieurs packages distincts (models, services, contro
 #### Modélisation des Entités
 
 - **Furniture**  
-  L’entité `Furniture` représente un meuble avec des attributs essentiels tels que le nom, la description, la taille, la couleur, la quantité et le prix. Son statut, géré par une énumération (`FurnitureStatus`), peut être « Available », « Out of stock » ou « Discontinued ».  
+  L’entité `Furniture` représente un meuble avec des attributs essentiels tels que le nom, la description, la taille, la couleur, la quantité et le prix. Son statut, géré par une énumération (`FurnitureStatus`), peut être « Disponible », « Rupture de stock » ou « Discontinué ».  
   De plus, chaque meuble est associé à :
 
   - Un type via la relation _Many-to-One_ avec `FurnitureType`.

@@ -1,3 +1,5 @@
+// frontend\src\app\services\furniture.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of } from 'rxjs';
@@ -18,7 +20,6 @@ export class FurnitureService {
   getFurnitures(): Observable<CardFurniture[]> {
     return this.http.get<any>(`${this.apiUrl}/furnitures`).pipe(
       map((response) => {
-        // console.log('Raw API response:', response);
         // Si l'API renvoie un objet unique, le transformer en tableau
         if (!Array.isArray(response)) {
           const cardFurniture: CardFurniture = {
@@ -42,8 +43,22 @@ export class FurnitureService {
     );
   }
 
-  getFurnitureById(id: number): Observable<FurnitureDetails> {
-    return this.http.get<FurnitureDetails>(`${this.apiUrl}/furniture/${id}`);
+  getFurnitureByIdForDetails(id: number): Observable<FurnitureDetails> {
+    return this.http.get<any>(`${this.apiUrl}/furniture/${id}`).pipe(
+      map((response) => ({
+        ...response,
+        materials: response.materialNames,
+      }))
+    );
+  }
+  
+  getFurnitureByIdForForm(id: number): Observable<FurnitureDetails> {
+    return this.http.get<any>(`${this.apiUrl}/furniture/${id}`).pipe(
+      map((response) => ({
+        ...response,
+        materials: response.materialIds, // create a new property called materials
+      }))
+    );
   }
 
   deleteFurniture(id: number) {

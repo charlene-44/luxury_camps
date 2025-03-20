@@ -10,7 +10,7 @@ public class FurnitureCreateDTO {
     private String colour;
     private int quantity;
     private double price;
-    private String status; // "Available", "Out of stock", "Discontinued"
+    private String status; // "Disponible", "Rupture de stock", "Discontinué"
     private Long typeId;
     private List<Long> materialIds;
     private List<String> imageUrls;
