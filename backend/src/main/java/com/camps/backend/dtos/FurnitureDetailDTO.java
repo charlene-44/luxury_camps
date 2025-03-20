@@ -13,23 +13,25 @@ public class FurnitureDetailDTO {
     private double price;
     private String status;
     private String type;
-    private List<String> materials;
+    private List<Long> materialIds;
+    private List<String> materialNames;
     private List<String> imageUrls;
 
     public FurnitureDetailDTO(Long id, String name, String description, String size, String colour,
-                              int quantity, double price, String status, String type,
-                              List<String> materials, List<String> imageUrls) {
+                          int quantity, double price, String status, String type,
+                          List<Long> materialIds, List<String> materialNames, List<String> imageUrls) {
         this.id = id;
-        this.name = name;
-        this.description = description;
-        this.size = size;
-        this.colour = colour;
-        this.quantity = quantity;
-        this.price = price;
-        this.status = status;
-        this.type = type;
-        this.materials = materials;
-        this.imageUrls = imageUrls;
+    this.name = name;
+    this.description = description;
+    this.size = size;
+    this.colour = colour;
+    this.quantity = quantity;
+    this.price = price;
+    this.status = status;
+    this.type = type;
+    this.materialIds = materialIds;
+    this.materialNames = materialNames;
+    this.imageUrls = imageUrls;
     }
 
     // Getters & Setters
@@ -61,9 +63,13 @@ public class FurnitureDetailDTO {
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
 
-    public List<String> getMaterials() { return materials; }
-    public void setMaterials(List<String> materials) { this.materials = materials; }
+    public List<Long> getMaterialIds() { return materialIds; }
+    public void setMaterialIds(List<Long> materialIds) { this.materialIds = materialIds; }
 
     public List<String> getImageUrls() { return imageUrls; }
     public void setImageUrls(List<String> imageUrls) { this.imageUrls = imageUrls; }
+
+public List<String> getMaterialNames() { return materialNames; }
+public void setMaterialNames(List<String> materialNames) { this.materialNames = materialNames; }
+
 }

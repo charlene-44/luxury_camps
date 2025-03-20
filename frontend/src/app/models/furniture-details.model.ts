@@ -10,6 +10,7 @@ export interface FurnitureDetails {
   quantity: number;
   status: string;
   type: string;
-  materials: string[];
+  materialIds: number[];
+  materials: string[]; // This will be used by the details page
   imageUrls: string[];
 }

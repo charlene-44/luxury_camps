@@ -1,0 +1,52 @@
+// frontend\src\app\components\furniture-form\furniture-form.component.scss
+
+@charset "utf-8";
+@use "tailwindcss" as *;
+
+@utility form-wrapper {
+  @apply p-8 max-w-3xl mx-auto bg-orange-50 text-emerald-950 mt-8 rounded-lg shadow-lg;
+}
+
+@utility field-title {
+  @apply block text-sm font-medium text-emerald-950 mb-2;
+}
+
+@utility field-input {
+  @apply w-full p-2 border rounded text-emerald-950 placeholder:text-emerald-950 placeholder:opacity-50;
+}
+
+@utility standard-container {
+  @apply mb-4;
+}
+
+@utility error-text {
+  @apply text-red-600 mb-4;
+}
+
+@utility special-container-1 {
+  @apply flex space-x-4 mb-4;
+}
+
+@utility special-container-2 {
+  @apply grid grid-cols-2 gap-4 mb-4;
+}
+
+@utility special-container-3 {
+  @apply flex items-center space-x-2;
+}
+
+@utility remove-image-button {
+  @apply bg-red-600 text-white px-2 py-1 rounded cursor-pointer;
+}
+
+@utility add-image-button {
+  @apply mt-2 bg-emerald-950 border border-emerald-950 text-white px-4 py-2 rounded cursor-pointer;
+}
+
+@utility form-footer {
+  @apply flex justify-end;
+}
+
+@utility add-furniture-button {
+  @apply bg-emerald-950 border border-emerald-950 text-white px-4 py-2 rounded cursor-pointer;
+}
