@@ -178,6 +178,20 @@ public class FurnitureService {
             furniture.setType(type);
         }
 
+        if (updates.containsKey("materialIds")) {
+    @SuppressWarnings("unchecked")
+    List<?> materialIdsRaw = (List<?>) updates.get("materialIds");
+    Set<Material> updatedMaterials = materialIdsRaw.stream()
+            .map(idObj -> {
+                Long materialId = Long.valueOf(idObj.toString());
+                return materialRepository.findById(materialId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Matériau non trouvé avec l'id: " + materialId));
+            })
+            .collect(Collectors.toSet());
+    furniture.setMaterials(updatedMaterials);
+}
+
+
         // *** New code to update images ***
     if (updates.containsKey("imageUrls")) {
         // Expecting "imageUrls" to be a List of Strings
