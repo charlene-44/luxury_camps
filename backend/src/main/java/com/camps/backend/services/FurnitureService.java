@@ -177,6 +177,25 @@ public class FurnitureService {
                 .orElseThrow(() -> new ResourceNotFoundException("Type de meuble non trouvé avec l'id: " + typeId));
             furniture.setType(type);
         }
+
+        // *** New code to update images ***
+    if (updates.containsKey("imageUrls")) {
+        // Expecting "imageUrls" to be a List of Strings
+        @SuppressWarnings("unchecked")
+        List<String> urls = (List<String>) updates.get("imageUrls");
+        // Clear existing images
+        furniture.getImages().clear();
+        // Add new images from the URLs provided (ignoring empty strings)
+        if (urls != null && !urls.isEmpty()) {
+            for (String url : urls) {
+                if (url != null && !url.trim().isEmpty()) {
+                    Image img = new Image();
+                    img.setUrl(url);
+                    furniture.addImage(img); // This helper method sets the association properly
+                }
+            }
+        }
+    }
         
         // Sauvegarder et retourner le meuble mis à jour
         return furnitureRepository.save(furniture);
