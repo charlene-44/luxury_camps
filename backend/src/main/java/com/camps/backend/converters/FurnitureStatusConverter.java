@@ -13,10 +13,10 @@ public class FurnitureStatusConverter implements AttributeConverter<FurnitureSta
     public String convertToDatabaseColumn(FurnitureStatus status) {
         if (status == null) return null;
         switch (status) {
-            case AVAILABLE:     return "Available";
-            case OUT_OF_STOCK:  return "Out of stock";
-            case DISCONTINUED:  return "Discontinued";
-            default: throw new IllegalArgumentException("Unknown FurnitureStatus: " + status);
+            case AVAILABLE:     return "Disponible";
+            case OUT_OF_STOCK:  return "Rupture de stock";
+            case DISCONTINUED:  return "Discontinué";
+            default: throw new IllegalArgumentException("Statut de meuble inconnu: " + status);
         }
     }
 
@@ -24,10 +24,10 @@ public class FurnitureStatusConverter implements AttributeConverter<FurnitureSta
     public FurnitureStatus convertToEntityAttribute(String dbData) {
         if (dbData == null) return null;
         switch (dbData) {
-            case "Available":    return FurnitureStatus.AVAILABLE;
-            case "Out of stock": return FurnitureStatus.OUT_OF_STOCK;
-            case "Discontinued": return FurnitureStatus.DISCONTINUED;
-            default: throw new IllegalArgumentException("Unknown db value for FurnitureStatus: " + dbData);
+            case "Disponible":    return FurnitureStatus.AVAILABLE;
+            case "Rupture de stock": return FurnitureStatus.OUT_OF_STOCK;
+            case "Discontinué": return FurnitureStatus.DISCONTINUED;
+            default: throw new IllegalArgumentException("Valeur inconnue pour le statut de meuble: " + dbData);
         }
     }
 }

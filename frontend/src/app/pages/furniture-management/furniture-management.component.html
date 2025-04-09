@@ -1,20 +1,20 @@
 <!-- frontend\src\app\pages\furniture-management\furniture-management.component.html -->
 
 <div class="p-8">
-  <h1 class="text-2xl font-bold mb-4">Manage Furnitures</h1>
+  <h1 class="text-2xl font-bold mb-4">Gestion des meubles</h1>
 
-  <div *ngIf="loading" class="text-center">Loading...</div>
+  <div *ngIf="loading" class="text-center">Chargement...</div>
   <div *ngIf="error" class="text-center text-red-500">
-    Error loading furnitures.
+    Erreur lors du chargement des meubles.
   </div>
 
   <div *ngIf="!loading && !error">
     <!-- Dashboard Section -->
     <div class="mb-6">
       <div class="grid grid-cols-3 gap-4">
-        <div class="bg-gray-800 p-4 rounded-lg">
+        <div class="bg-orange-50 text-emerald-950 p-4 rounded-lg">
+          <p>Total des meubles</p>
           <p class="text-lg font-bold">{{ furnitures.length }}</p>
-          <p>Total Furnitures</p>
         </div>
         <!-- You can add more dashboard cards here if needed -->
       </div>
@@ -26,8 +26,8 @@
         <thead class="bg-emerald-950 text-white">
           <tr>
             <th class="py-3 px-4 text-left">ID</th>
-            <th class="py-3 px-4 text-left">Name</th>
-            <th class="py-3 px-4 text-left">Price</th>
+            <th class="py-3 px-4 text-left">Nom</th>
+            <th class="py-3 px-4 text-left">Prix</th>
             <th class="py-3 px-4 text-left">Image</th>
             <th class="py-3 px-4 text-left">Actions</th>
           </tr>
@@ -52,13 +52,13 @@
                 (click)="editFurniture(furniture.id)"
                 class="bg-cyan-950 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow transition duration-200"
               >
-                Edit
+                Modifier
               </button>
               <button
                 (click)="deleteFurniture(furniture.id)"
                 class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow transition duration-200 ml-2"
               >
-                Delete
+                Supprimer
               </button>
             </td>
           </tr>

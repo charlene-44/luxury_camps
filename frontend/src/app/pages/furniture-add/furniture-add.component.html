@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- frontend\src\app\pages\furniture-add\furniture-add.component.html -->
 
 <div class="p-8 max-w-3xl mx-auto bg-emearald-950 shadow-lg rounded-lg">
@@ -174,3 +175,13 @@
     </div>
   </form>
 </div>
+=======
+<!-- frontend/src/app/pages/furniture-add/furniture-add.component.html -->
+<app-furniture-form
+  [furnitureTypes]="furnitureTypes"
+  [materials]="materials"
+  [statuses]="statuses"
+  [loading]="loading"
+  (formSubmit)="submitForm($event)"
+></app-furniture-form>
+>>>>>>> 0e3b180d5209863a61e4bbfce08f6ca0dc5b45e2

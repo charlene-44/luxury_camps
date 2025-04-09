@@ -62,7 +62,7 @@ CREATE TABLE
         `colour` VARCHAR(255) NOT NULL,
         `quantity` INT NOT NULL,
         `price` DOUBLE NOT NULL,
-        `status` ENUM ('Available', 'Out of stock', 'Discontinued') NOT NULL,
+        `status` ENUM ('Disponible', 'Rupture de stock', 'Discontinué') NOT NULL,
         CONSTRAINT `furniture_id_type_foreign` FOREIGN KEY (`id_type`) REFERENCES `FurnitureType` (`id`) ON DELETE CASCADE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
 
@@ -139,7 +139,7 @@ INSERT INTO Furniture (
     'Beige',
     10,
     60000.00,
-    'Available'
+    'Disponible'
 ),
 
 (
@@ -150,7 +150,7 @@ INSERT INTO Furniture (
     'bleu / blanc',
     5,
     5700,
-    'Available'
+    'Disponible'
 ),
 (
     'Cabriolet Hermes',
@@ -160,7 +160,7 @@ INSERT INTO Furniture (
     'Noir',
     2,
     15700,
-    'Available'
+    'Disponible'
 ),
 (
     'Chaise Dior',
@@ -170,7 +170,7 @@ INSERT INTO Furniture (
     'Bleu',
     4,
     35000,
-    'Available'
+    'Disponible'
 ),
 (
     'Lampe Hermes',
@@ -180,7 +180,7 @@ INSERT INTO Furniture (
     'Blanc',
     25,
     9200,
-    'Available'
+    'Disponible'
 ),
 (
     'Chaise Louis Vuitton',
@@ -190,7 +190,7 @@ INSERT INTO Furniture (
     'Blanc/Marron',
     1,
     315000,
-    'Available'
+    'Disponible'
 ),
 (
     'Plateau Dior',
@@ -200,7 +200,7 @@ INSERT INTO Furniture (
     'Bleu/Noir',
     22,
     1500,
-    'Available'
+    'Disponible'
 ),
 (
     'Secrétaire Hermes',
@@ -210,7 +210,7 @@ INSERT INTO Furniture (
     'Marron',
     3,
     39800,
-    'Available'
+    'Disponible'
 ),
 (
     'Vide Poche Dior',
@@ -220,7 +220,7 @@ INSERT INTO Furniture (
     'Vert',
     100,
     410,
-    'Available'
+    'Disponible'
 );
 
 

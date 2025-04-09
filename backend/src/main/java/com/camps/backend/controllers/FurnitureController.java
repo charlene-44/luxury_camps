@@ -14,6 +14,7 @@ import com.camps.backend.errors.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 @RestController
@@ -67,11 +68,21 @@ public class FurnitureController {
     private FurnitureDetailDTO convertToDetailDTO(Furniture furniture) {
         String typeName = (furniture.getType() != null) ? furniture.getType().getName() : null;
         // Récupérer les noms des matériaux
-        java.util.List<String> materialNames = (furniture.getMaterials() != null)
-                ? furniture.getMaterials().stream()
-                    .map(material -> material.getName())
-                    .collect(Collectors.toList())
-                : java.util.Collections.emptyList();
+        // Retrieve material names
+    List<String> materialNames = (furniture.getMaterials() != null)
+        ? furniture.getMaterials().stream()
+              .map(material -> material.getName())
+              .collect(Collectors.toList())
+        : Collections.emptyList();
+
+
+        List<Long> materialIds = (furniture.getMaterials() != null)
+            ? furniture.getMaterials().stream()
+                  .map(material -> material.getId()) // Return the Long id directly
+                  .collect(Collectors.toList())
+            : Collections.emptyList();
+
+
         // Récupérer les URLs des images
         java.util.List<String> imageUrls = (furniture.getImages() != null)
                 ? furniture.getImages().stream()
@@ -89,6 +100,7 @@ public class FurnitureController {
                 furniture.getPrice(),
                 furniture.getStatus().toString(),
                 typeName,
+                materialIds,
                 materialNames,
                 imageUrls
         );

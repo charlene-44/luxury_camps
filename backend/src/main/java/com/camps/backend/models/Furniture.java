@@ -6,6 +6,8 @@ import com.camps.backend.enums.FurnitureStatus;
 import com.camps.backend.converters.FurnitureStatusConverter;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -36,8 +38,8 @@ public class Furniture {
     @Column(nullable = false)
     private double price;
 
-    // La colonne "status" est de type ENUM('Available', 'Out of stock', 'Discontinued')
-    @Column(nullable = false, columnDefinition = "ENUM('Available', 'Out of stock', 'Discontinued')")
+    // La colonne "status" est de type ENUM('Disponible', 'Rupture de stock', 'Discontinué')
+    @Column(nullable = false, columnDefinition = "ENUM('Disponible', 'Rupture de stock', 'Discontinué')")
     @Convert(converter = FurnitureStatusConverter.class)
     private FurnitureStatus status;
 
@@ -60,9 +62,8 @@ public class Furniture {
     private Set<Material> materials;
 
     // Un meuble peut avoir plusieurs images
-    @OneToMany(mappedBy = "furniture")
-    private List<Image> images;
-
+    @OneToMany(mappedBy = "furniture", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Image> images = new ArrayList<>();
     // Constructeurs, getters et setters...
     // Constructeur par défaut
     public Furniture() {
@@ -156,5 +157,13 @@ public class Furniture {
 
     public void setMaterials (Set<Material> materials){
         this.materials = materials;
+    }
+
+    public void addImage(Image image) {
+        if (images == null) {
+            images = new ArrayList<>();
+        }
+        images.add(image);
+        image.setFurniture(this);
     }
 }

@@ -50,13 +50,23 @@ public class FurnitureService {
         furniture.setColour(dto.getColour());
         furniture.setQuantity(dto.getQuantity());
         furniture.setPrice(dto.getPrice());
+
+        // Check if the status is provided
+        if (dto.getStatus() == null || dto.getStatus().trim().isEmpty()) {
+            throw new IllegalArgumentException("Le statut est requis et ne peut pas être vide.");
+        }
         
-        // Conversion du statut (en adaptant par exemple "Out of stock" en OUT_OF_STOCK)
-        try {
-            furniture.setStatus(FurnitureStatus.valueOf(dto.getStatus().toUpperCase().replace(" ", "_")));
-        } catch (IllegalArgumentException ex) {
+        // Conversion du statut (en adaptant par exemple "Rupture de stock" en OUT_OF_STOCK)
+        if ("Disponible".equalsIgnoreCase(dto.getStatus())) {
+            furniture.setStatus(FurnitureStatus.AVAILABLE);
+        } else if ("Rupture de stock".equalsIgnoreCase(dto.getStatus())) {
+            furniture.setStatus(FurnitureStatus.OUT_OF_STOCK);
+        } else if ("Discontinué".equalsIgnoreCase(dto.getStatus())) {
+            furniture.setStatus(FurnitureStatus.DISCONTINUED);
+        } else {
             throw new IllegalArgumentException("Statut invalide: " + dto.getStatus());
         }
+
         
         // Récupération et affectation du FurnitureType
         FurnitureType type = furnitureTypeRepository.findById(dto.getTypeId())
@@ -74,13 +84,15 @@ public class FurnitureService {
         
         // Création des images à partir des URLs
         if (dto.getImageUrls() != null && !dto.getImageUrls().isEmpty()) {
-            List<Image> images = dto.getImageUrls().stream().map(url -> {
+            System.out.println("Nombre d'URLs d'images reçues : " + dto.getImageUrls().size());
+            
+            dto.getImageUrls().forEach(url -> {
                 Image img = new Image();
                 img.setUrl(url);
-                img.setFurniture(furniture); // association bidirectionnelle
-                return img;
-            }).collect(Collectors.toList());
-            furniture.setImages(images);
+                furniture.addImage(img); // Utiliser la méthode helper
+            });
+            
+            System.out.println("Nombre d'images créées : " + furniture.getImages().size());
         }
         
         return furnitureRepository.save(furniture);
@@ -138,12 +150,18 @@ public class FurnitureService {
         
         if (updates.containsKey("status")) {
             String statusStr = (String) updates.get("status");
-            try {
-                furniture.setStatus(FurnitureStatus.valueOf(statusStr.toUpperCase().replace(" ", "_")));
-            } catch (IllegalArgumentException ex) {
+            // Conversion du statut en fonction de la chaîne reçue
+            if ("Disponible".equalsIgnoreCase(statusStr)) {
+                furniture.setStatus(FurnitureStatus.AVAILABLE);
+            } else if ("Rupture de stock".equalsIgnoreCase(statusStr)) {
+                furniture.setStatus(FurnitureStatus.OUT_OF_STOCK);
+            } else if ("Discontinué".equalsIgnoreCase(statusStr)) {
+                furniture.setStatus(FurnitureStatus.DISCONTINUED);
+            } else {
                 throw new IllegalArgumentException("Statut invalide: " + statusStr);
             }
         }
+
         
         // Mettre à jour le type si présent
         if (updates.containsKey("typeId")) {
@@ -159,6 +177,39 @@ public class FurnitureService {
                 .orElseThrow(() -> new ResourceNotFoundException("Type de meuble non trouvé avec l'id: " + typeId));
             furniture.setType(type);
         }
+
+        if (updates.containsKey("materialIds")) {
+    @SuppressWarnings("unchecked")
+    List<?> materialIdsRaw = (List<?>) updates.get("materialIds");
+    Set<Material> updatedMaterials = materialIdsRaw.stream()
+            .map(idObj -> {
+                Long materialId = Long.valueOf(idObj.toString());
+                return materialRepository.findById(materialId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Matériau non trouvé avec l'id: " + materialId));
+            })
+            .collect(Collectors.toSet());
+    furniture.setMaterials(updatedMaterials);
+}
+
+
+        // *** New code to update images ***
+    if (updates.containsKey("imageUrls")) {
+        // Expecting "imageUrls" to be a List of Strings
+        @SuppressWarnings("unchecked")
+        List<String> urls = (List<String>) updates.get("imageUrls");
+        // Clear existing images
+        furniture.getImages().clear();
+        // Add new images from the URLs provided (ignoring empty strings)
+        if (urls != null && !urls.isEmpty()) {
+            for (String url : urls) {
+                if (url != null && !url.trim().isEmpty()) {
+                    Image img = new Image();
+                    img.setUrl(url);
+                    furniture.addImage(img); // This helper method sets the association properly
+                }
+            }
+        }
+    }
         
         // Sauvegarder et retourner le meuble mis à jour
         return furnitureRepository.save(furniture);

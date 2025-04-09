@@ -1,6 +1,6 @@
 export interface FurnitureAdmin {
-    id: number;
-    name: string;
-    price: number;
-    status: 'Available' | 'Out of stock' | 'Discontinued';
-  }
+  id: number;
+  name: string;
+  price: number;
+  status: 'Disponible' | 'Rupture de stock' | 'Discontinué';
+}
